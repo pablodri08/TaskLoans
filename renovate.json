@@ -1,0 +1,31 @@
+{
+  "branchPrefix": "deps/",
+  "extends": [
+    "config:base"
+  ],
+  "ignoreDeps": [
+    "androidx.lifecycle:lifecycle-viewmodel-savedstate",
+    "androidx.navigation:navigation-fragment-ktx",
+    "androidx.navigation:navigation-safe-args-gradle-plugin",
+    "com.squareup.okhttp3:logging-interceptor",
+    "com.squareup.okhttp3:okhttp-urlconnection",
+    "com.squareup.retrofit2:adapter-rxjava2",
+    "com.squareup.retrofit2:converter-gson",
+    "io.gitlab.arturbosch.detekt:detekt-formatting",
+    "org.jetbrains.kotlin:kotlin-android-extensions",
+    "org.jetbrains.kotlin:kotlin-gradle-plugin",
+    "org.jetbrains.kotlin:kotlin-reflect",
+    "org.koin:koin-androidx-fragment",
+    "org.koin:koin-androidx-scope",
+    "org.koin:koin-androidx-viewmodel"
+  ],
+  "ignorePaths": [
+    "./.github/"
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "prConcurrentLimit": 4,
+  "rebaseWhen": "never",
+  "reviewers": []
+}

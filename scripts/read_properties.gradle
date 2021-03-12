@@ -1,0 +1,26 @@
+final def SECRET_PROPERTIES = new Properties()
+if (rootProject.secretsPropertiesFile.exists()) {
+    rootProject.secretsPropertiesFile.withInputStream { SECRET_PROPERTIES.load(it) }
+}
+
+final def CONFIG_PROPERTIES = new Properties()
+if (rootProject.configPropertiesFile.exists()) {
+    rootProject.configPropertiesFile.withInputStream { CONFIG_PROPERTIES.load(it) }
+}
+
+ext.getEnvVariable = { key, defaultValue = null ->
+    def value = SECRET_PROPERTIES[key]
+    if (value != null) {
+        return value
+    }
+    value = CONFIG_PROPERTIES[key]
+    if (value != null) {
+        return value
+    }
+    value = project.hasProperty(key) ? project.getProperty(key) : System.getenv(key)
+    value = value?.trim() ? value : null
+    if (value == null && defaultValue == null) {
+        logger.warn("Variable '$key' is not defined.")
+    }
+    return value ?: defaultValue
+}

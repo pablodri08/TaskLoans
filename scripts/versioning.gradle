@@ -1,0 +1,49 @@
+final def (versionMajorString, versionMinorString, versionPatchString) = rootProject.versionName.tokenize('.')
+
+def versionMajor = versionMajorString.toInteger()
+def versionMinor = versionMinorString.toInteger()
+def versionPatch = versionPatchString.toInteger()
+
+final def MAX_NUMBER_OF_PATCH_VERSIONS = 100
+final def MAX_NUMBER_OF_MINOR_VERSIONS = 100
+final def MAX_NUMBER_OF_MAJOR_VERSIONS = 100
+
+if (versionMajor > MAX_NUMBER_OF_MAJOR_VERSIONS) {
+    throw new IllegalStateException("The version's mayor number has to be smaller than " + MAX_NUMBER_OF_MAJOR_VERSIONS)
+}
+if (versionMinor > MAX_NUMBER_OF_MINOR_VERSIONS) {
+    throw new IllegalStateException("The version's minor number has to be smaller than " + MAX_NUMBER_OF_MINOR_VERSIONS)
+}
+if (versionPatch > MAX_NUMBER_OF_PATCH_VERSIONS) {
+    throw new IllegalStateException("The version's patch number has to be smaller than " + MAX_NUMBER_OF_PATCH_VERSIONS)
+}
+println("Version $versionMajor.$versionMinor.$versionPatch")
+
+android.applicationVariants.all { variant ->
+    def versionName = rootProject.versionName
+
+    variant.outputs.each { output ->
+        for (flavor in variant.productFlavors) {
+            def apk = output.outputFileName
+            if (apk.endsWith(".apk") && !apk.contains("unaligned")) {
+                def project = rootProject.name
+                def separator = "-"
+                def buildType = variant.buildType.name
+                def flavorName = flavor.name
+
+                def basePatchNumber = MAX_NUMBER_OF_PATCH_VERSIONS
+                def baseMinorNumber = MAX_NUMBER_OF_MINOR_VERSIONS * basePatchNumber
+                def baseMayorNumber = MAX_NUMBER_OF_MAJOR_VERSIONS * baseMinorNumber
+
+                def versionCode = baseMayorNumber * versionMajor +
+                        baseMinorNumber * versionMinor +
+                        basePatchNumber * versionPatch + flavor.ext.buildTypeCode
+
+                def apkName = project + separator + versionName + "($versionCode)" + separator + flavorName + separator + buildType + ".apk"
+                output.outputFileName = apkName
+                output.versionCodeOverride = versionCode
+                output.versionNameOverride = versionName
+            }
+        }
+    }
+}
