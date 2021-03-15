@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="background.outlined_textField">@android:color/white</color>
+    <color name="background.textFieldIcon">@color/grey</color>
+    <color name="background.icon_transparent">@color/dark_grey2</color>
+    <color name="background.icon">@color/dark_grey</color>
+    <color name="text.hints">@color/dark_grey</color>
+    <color name="text.button_transparent">@color/white</color>
+    <color name="text.link">@color/white</color>
+    <color name="outlined.textField">@color/dark_grey</color>
+
+
     <color name="primaryColor">@color/pink</color>
     <color name="primaryDarkColor">@color/pink_dark</color>
-
+    <color name="butterscotch">#fac633</color>
+    <color name="red_violet">#9d0066</color>
     <color name="pink">#d41a67</color>
     <color name="pink_dark">#9d003d</color>
+    <color name="dark_purple">#7E1579</color>
+    <color name="white">#ffffff</color>
+    <color name="grey">#e2e2e2</color>
+    <color name="dark_grey">#676767</color>
+    <color name="dark_grey2">#070707</color>
 </resources>

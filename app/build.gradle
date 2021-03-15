@@ -29,6 +29,7 @@ if (getEnvVariable('KEYSTORE_FILE') != null) {
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
+    google()
 }
 
 android {
@@ -45,6 +46,7 @@ android {
         multiDexEnabled true
         // Used to define some constants like the share preferences's file name.
         buildConfigField 'String', 'APP_NAME', '"TaskLoans"'
+        vectorDrawables.useSupportLibrary = true
     }
     buildFeatures.viewBinding = true
     signingConfigs {
@@ -160,6 +162,7 @@ dependencies {
     implementation deps.retrofit2.gsonAdapter
     implementation deps.stetho
     implementation deps.timber
+    implementation deps.material
 
     kapt deps.androidX.room.compiler
 
