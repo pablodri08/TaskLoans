@@ -20,8 +20,10 @@ object NetworkDiModule {
           useCurlInterceptor = Config.ANDROID_SYSTEM_LOG_ENABLED,
           useStethoInterceptor = Config.STETHO_ENABLED
       )
-      val sessionInterceptors = listOf<Interceptor>() // TODO: Add session interceptor and refresh token interceptor
-      NetworkLayerCreator.createRetrofitInstance(Config.API_BASE_URL, sessionInterceptors + debugInterceptors)
+      // TODO: Add session interceptor and refresh token interceptor
+      val sessionInterceptors = listOf<Interceptor>()
+      NetworkLayerCreator.createRetrofitInstance(Config.API_BASE_URL,
+          sessionInterceptors + debugInterceptors)
     }
   }
 }

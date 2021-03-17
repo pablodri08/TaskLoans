@@ -9,7 +9,6 @@
     <color name="text.link">@color/white</color>
     <color name="outlined.textField">@color/dark_grey</color>
 
-
     <color name="primaryColor">@color/pink</color>
     <color name="primaryDarkColor">@color/pink_dark</color>
     <color name="butterscotch">#fac633</color>

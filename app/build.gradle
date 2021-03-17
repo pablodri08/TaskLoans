@@ -27,11 +27,6 @@ if (getEnvVariable('KEYSTORE_FILE') != null) {
 // TODO: Enable Crashlytics
 // apply plugin: 'com.google.firebase.crashlytics'
 
-repositories {
-    maven { url 'https://maven.fabric.io/public' }
-    google()
-}
-
 android {
     compileSdkVersion androidVersions.compileSdk
     buildToolsVersion androidVersions.buildTools
@@ -162,7 +157,6 @@ dependencies {
     implementation deps.retrofit2.gsonAdapter
     implementation deps.stetho
     implementation deps.timber
-    implementation deps.material
 
     kapt deps.androidX.room.compiler
 

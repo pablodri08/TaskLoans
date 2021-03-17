@@ -22,6 +22,7 @@ class SignInFragmentViewModel(
     timeTrackerUseCase: TimeTrackerUseCase
 ) : ViewModel() {
   private val signInMutableLiveData = MutableLiveData<SignInUseCase.Params>()
+
   @OptIn(ExperimentalTime::class)
   val viewModelTime: LiveData<Result<Duration>> = timeTrackerUseCase.invoke(TimeTrackerUseCase.Params(Date()))
       .asLiveData()

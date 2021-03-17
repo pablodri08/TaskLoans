@@ -7,7 +7,6 @@ import android.widget.Toast
 import com.xmartlabs.taskloans.databinding.FragmentSigninBinding
 import com.xmartlabs.taskloans.ui.common.BaseViewBindingFragment
 import com.xmartlabs.taskloans.ui.common.extensions.observeStateResult
-import com.xmartlabs.taskloans.ui.common.extensions.observeSuccessResult
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.time.ExperimentalTime
 
@@ -15,47 +14,46 @@ import kotlin.time.ExperimentalTime
  * Created by mirland on 25/04/20.
  */
 class SignInFragment : BaseViewBindingFragment<FragmentSigninBinding>() {
-    private val viewModel: SignInFragmentViewModel by viewModel()
+  private val viewModel: SignInFragmentViewModel by viewModel()
 
-    override fun inflateViewBinding(): FragmentSigninBinding =
-            FragmentSigninBinding.inflate(layoutInflater)
+  override fun inflateViewBinding(): FragmentSigninBinding =
+      FragmentSigninBinding.inflate(layoutInflater)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setupButtons()
-        setupViewModelCallbacks()
-    }
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+    setupButtons()
+    setupViewModelCallbacks()
+  }
 
-    @SuppressLint("SetTextI18n")
-    @OptIn(ExperimentalTime::class)
-    private fun setupViewModelCallbacks() = with(viewModel) {
-        /*viewModelTime.observeSuccessResult(viewLifecycleOwner) { duration ->
-          viewBinding.viewModelTimeTextView.text = "View model time, ${duration.inSeconds} seconds"
-        }*/
-        signIn.observeStateResult(viewLifecycleOwner,
-                onFailure = { throwable ->
-                  if (throwable is SecurityException) {
-                    Toast.makeText(
-                            requireContext(),
-                            "password or username is wrong, try with userUd = 'xmartlabs', password 'xmartlabs'",
-                            Toast.LENGTH_SHORT
-                    ).show()
-                  }
-                },
-                onSuccess = {
-                  router.navigate(
-                          SignInFragmentDirections.actionSignInFragmentToWelcomeFragment()
-                  )
-                }
-        )
-    }
-
-    private fun setupButtons() = withViewBinding {
-        signInEnterButton.setOnClickListener {
-            viewModel.signIn(
-                    signInUserTextField.editText?.text.toString(),
-                    signInPasswordTextField.editText?.text.toString()
-            )
+  @SuppressLint("SetTextI18n")
+  @OptIn(ExperimentalTime::class)
+  private fun setupViewModelCallbacks() = with(viewModel) {
+    signIn.observeStateResult(viewLifecycleOwner,
+        onFailure = { throwable ->
+          if (throwable is SecurityException) {
+            withViewBinding { signInProgressBar.visibility = View.INVISIBLE }
+            Toast.makeText(
+                requireContext(),
+                "password or username is wrong, try with userUd = 'xmartlabs', password 'xmartlabs'",
+                Toast.LENGTH_SHORT
+            ).show()
+          }
+        },
+        onSuccess = {
+          router.navigate(
+              SignInFragmentDirections.actionSignInFragmentToWelcomeFragment()
+          )
         }
+    )
+  }
+
+  private fun setupButtons() = withViewBinding {
+    signInEnterButton.setOnClickListener {
+      signInProgressBar.visibility = View.VISIBLE
+      viewModel.signIn(
+          signInUserTextField.editText?.text.toString(),
+          signInPasswordTextField.editText?.text.toString()
+      )
     }
+  }
 }

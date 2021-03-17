@@ -10,6 +10,6 @@ import com.xmartlabs.taskloans.domain.usecase.SessionType
  * Created by mirland on 03/05/20.
  */
 class SplashFragmentViewModel(getSessionTypeUseCase: GetSessionTypeUseCase) : ViewModel() {
-    val currentSessionTypeLiveData: LiveData<ProcessState<SessionType>> =
-            getSessionTypeUseCase.invokeAsLiveData(Unit)
+  val currentSessionTypeLiveData: LiveData<ProcessState<SessionType>> =
+      getSessionTypeUseCase.invokeAsLiveData(Unit)
 }
