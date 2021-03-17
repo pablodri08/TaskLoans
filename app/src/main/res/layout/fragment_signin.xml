@@ -1,71 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/login_background"
     >
 
+    <ImageView
+        android:id="@+id/signInTransferImage"
+        android:layout_width="62dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="88dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/transfer"
+        />
+
     <TextView
-        android:id="@+id/hiAllTextView"
+        android:id="@+id/signInHeaderText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:text="Hi all"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText"
+        android:layout_marginBottom="450dp"
+        android:layout_marginTop="7dp"
+        android:text="@string/screen_sign_in.no_name"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signInTransferImage"
+        app:layout_constraintVertical_bias="0.0"
+        style="@style/HeaderText"
         />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/userIdEditText"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:hint="User id"
-        android:inputType="text"
-        android:maxLines="1"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/signInUserTextField"
+        android:layout_width="280dp"
+        android:layout_height="45dp"
+        android:hint="@string/user"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="81dp"
+        app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/hiAllTextView"
-        tools:ignore="HardcodedText"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/signInHeaderText"
+        app:startIconDrawable="@drawable/filled"
+        app:startIconTint="@color/background.icon_transparent"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        >
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/passwordEditText"
-        android:layout_width="200dp"
+        <com.google.android.material.textfield.TextInputEditText
+
+            android:id="@+id/signInUserEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/cairo_light"
+            android:hint="@string/user"
+            android:textColorHint="@color/text.hints"
+            style="@style/SignInEditText"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/signInPasswordTextField"
+        android:layout_width="280dp"
+        android:layout_height="45dp"
+        android:fontFamily="@font/cairo"
+        android:hint="@string/password"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="25dp"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signInUserTextField"
+        app:startIconDrawable="@drawable/shape"
+        app:startIconTint="@color/background.icon"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signInPasswordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/cairo_light"
+            android:hint="@string/password"
+            android:textColorHint="@color/text.hints"
+            style="@style/SignInEditText"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/signInEnterButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Password"
-        android:inputType="textPassword"
+        android:fontFamily="@font/cairo_bold"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_margin="20dp"
+        android:layout_marginEnd="146dp"
+        android:layout_marginStart="146dp"
+        android:layout_marginTop="32dp"
+        android:letterSpacing="0.02"
+        android:lineSpacingExtra="27sp"
+        android:padding="10dp"
+        android:text="@string/enter"
+        android:textAllCaps="true"
+        android:textColor="@color/text.button_transparent"
+        android:textSize="@dimen/text_size.regular_big"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/userIdEditText"
-        tools:ignore="HardcodedText"
+        app:layout_constraintTop_toBottomOf="@+id/signInPasswordTextField"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
         />
 
     <TextView
-        android:id="@+id/viewModelTimeTextView"
-        android:layout_width="match_parent"
+        android:id="@+id/signInCreateAccount"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="end"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@id/signInButton"
-        tools:text="View Model Time"
+        android:text="@string/create_account"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signInEnterButton"
+        style="@style/TextStyle.Link"
         />
 
-    <Button
-        android:id="@+id/signInButton"
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/signInProgressBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:padding="10dp"
-        android:text="Sign In"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="HardcodedText"
+        android:indeterminate="true"
+        android:visibility="invisible"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="5dp"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

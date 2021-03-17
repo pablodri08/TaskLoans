@@ -7,7 +7,6 @@ import android.widget.Toast
 import com.xmartlabs.taskloans.databinding.FragmentSigninBinding
 import com.xmartlabs.taskloans.ui.common.BaseViewBindingFragment
 import com.xmartlabs.taskloans.ui.common.extensions.observeStateResult
-import com.xmartlabs.taskloans.ui.common.extensions.observeSuccessResult
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.time.ExperimentalTime
 
@@ -29,12 +28,10 @@ class SignInFragment : BaseViewBindingFragment<FragmentSigninBinding>() {
   @SuppressLint("SetTextI18n")
   @OptIn(ExperimentalTime::class)
   private fun setupViewModelCallbacks() = with(viewModel) {
-    viewModelTime.observeSuccessResult(viewLifecycleOwner) { duration ->
-      viewBinding.viewModelTimeTextView.text = "View model time, ${duration.inSeconds} seconds"
-    }
     signIn.observeStateResult(viewLifecycleOwner,
         onFailure = { throwable ->
           if (throwable is SecurityException) {
+            withViewBinding { signInProgressBar.visibility = View.INVISIBLE }
             Toast.makeText(
                 requireContext(),
                 "password or username is wrong, try with userUd = 'xmartlabs', password 'xmartlabs'",
@@ -51,10 +48,11 @@ class SignInFragment : BaseViewBindingFragment<FragmentSigninBinding>() {
   }
 
   private fun setupButtons() = withViewBinding {
-    signInButton.setOnClickListener {
+    signInEnterButton.setOnClickListener {
+      signInProgressBar.visibility = View.VISIBLE
       viewModel.signIn(
-          userIdEditText.text.toString(),
-          passwordEditText.text.toString()
+          signInUserTextField.editText?.text.toString(),
+          signInPasswordTextField.editText?.text.toString()
       )
     }
   }

@@ -1,13 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Bridge">
         <!-- Customize your theme here. -->
-        <item name="android:colorPrimary">@color/primaryColor</item>
-        <item name="android:colorPrimaryDark">@color/primaryDarkColor</item>
-        <item name="colorOnPrimary">@android:color/white</item>
-        <item name="colorPrimary">@color/primaryColor</item>
-        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="colorPrimary">@color/dark_purple</item>
+        <item name="colorPrimaryDark">@color/dark_purple</item>
+        <item name="colorAccent">@color/dark_purple</item>
     </style>
 
     <style name="AppTheme.Launcher" parent="AppTheme.NoActionBar">
@@ -30,5 +28,31 @@
         <item name="android:minHeight">?attr/actionBarSize</item>
         <item name="android:background">@color/pink</item>
         <item name="titleTextColor">@android:color/white</item>
+    </style>
+
+    <style name="HeaderText" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">36sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="SignInEditText" parent="@android:style/TextAppearance">
+        <item name="android:background">@drawable/login_shape</item>
+        <item name="android:textColor">@color/outlined.textField</item>
+        <item name="android:drawablePadding">20dp</item>
+        <item name="android:textSize">@dimen/text_size.medium</item>
+    </style>
+
+    <style name="TextStyle.Link" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_size.small</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:lineSpacingExtra">33sp</item>
+        <item name="android:fontFamily">@font/cairo_regular</item>
+    </style>
+
+    <style name="FontCairo" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/cairo</item>
     </style>
 </resources>

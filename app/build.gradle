@@ -27,10 +27,6 @@ if (getEnvVariable('KEYSTORE_FILE') != null) {
 // TODO: Enable Crashlytics
 // apply plugin: 'com.google.firebase.crashlytics'
 
-repositories {
-    maven { url 'https://maven.fabric.io/public' }
-}
-
 android {
     compileSdkVersion androidVersions.compileSdk
     buildToolsVersion androidVersions.buildTools
@@ -45,6 +41,7 @@ android {
         multiDexEnabled true
         // Used to define some constants like the share preferences's file name.
         buildConfigField 'String', 'APP_NAME', '"TaskLoans"'
+        vectorDrawables.useSupportLibrary = true
     }
     buildFeatures.viewBinding = true
     signingConfigs {
