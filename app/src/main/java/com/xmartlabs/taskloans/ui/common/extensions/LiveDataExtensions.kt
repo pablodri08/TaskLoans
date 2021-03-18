@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.observe
 import com.xmartlabs.taskloans.device.common.ProcessState
 import com.xmartlabs.swissknife.core.extensions.exhaustive
+import timber.log.Timber
 
 /**
  * Created by mirland on 28/04/20.

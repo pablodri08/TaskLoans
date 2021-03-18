@@ -4,6 +4,7 @@ import com.xmartlabs.taskloans.Config
 import com.xmartlabs.taskloans.data.service.LocationServiceApi
 import com.xmartlabs.taskloans.data.service.NetworkDebugInterceptors
 import com.xmartlabs.taskloans.data.service.NetworkLayerCreator
+import com.xmartlabs.taskloans.data.service.OutServiceApi
 import okhttp3.Interceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -14,6 +15,7 @@ import retrofit2.Retrofit
 object NetworkDiModule {
   val network = module {
     single { get<Retrofit>().create(LocationServiceApi::class.java) }
+    single { get<Retrofit>().create(OutServiceApi::class.java) }
     single {
       val debugInterceptors = NetworkDebugInterceptors.createDebugInterceptors(
           useOkHttpInterceptor = Config.ANDROID_SYSTEM_LOG_ENABLED,

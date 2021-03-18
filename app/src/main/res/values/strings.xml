@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">TaskLoans</string>
     <string name="screen_sign_in.no_name">noname</string>
-    <string name="user">Usuario</string>
+    <string name="user">Email</string>
     <string name="password">Contraseña</string>
     <string name="enter">entrar</string>
     <string name="create_account">Sin cuenta? <u>Crea una nueva</u> </string>

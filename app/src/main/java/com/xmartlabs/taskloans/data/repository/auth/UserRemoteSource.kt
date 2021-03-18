@@ -1,29 +1,21 @@
 package com.xmartlabs.taskloans.data.repository.auth
 
-import com.xmartlabs.taskloans.data.model.User
+import android.util.Log
+import com.xmartlabs.taskloans.data.model.service.SignInRequest
 import com.xmartlabs.taskloans.data.model.service.SignInResponse
+import com.xmartlabs.taskloans.data.service.OutServiceApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.Locale
 
 /**
  * Created by mirland on 25/04/20.
  */
-class UserRemoteSource {
-  companion object {
-    private const val VALID_PASSWORD = "xmartlabs"
-    private const val VALID_ID = "xmartlabs"
-    private val XMARTLABS_USER = User("xmartlabs", "xmartlabs", "hi@xmartlabs.com")
-  }
+class UserRemoteSource(private val outServiceApi: OutServiceApi) {
 
-  suspend fun signIn(id: String, password: String) = withContext(Dispatchers.IO) {
-    @Suppress("MagicNumber")
-    delay(100) // Simulate network delay
-    if (id.toLowerCase(Locale.ROOT) == VALID_ID && password == VALID_PASSWORD) {
-      SignInResponse("auth_token", XMARTLABS_USER)
-    } else {
-      throw SecurityException("Invalid User")
-    }
-  }
+  suspend fun signIn(id: String, password: String) = outServiceApi.signInUser(SignInRequest(id, password))
 }
