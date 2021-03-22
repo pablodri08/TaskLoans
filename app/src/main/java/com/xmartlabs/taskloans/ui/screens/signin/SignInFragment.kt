@@ -61,7 +61,7 @@ class SignInFragment : BaseViewBindingFragment<FragmentSigninBinding>() {
   private fun setupButtons() = withViewBinding {
     signInEnterButton.setOnClickListener {
       if (validateMail(signInUserTextField.editText?.text.toString()) &&
-      validatePassword(signInPasswordEditText.text.toString())) {
+          validatePassword(signInPasswordEditText.text.toString())) {
         signInUserTextField.error = null
         signInPasswordTextField.error = null
         signInEnterButton.disable()

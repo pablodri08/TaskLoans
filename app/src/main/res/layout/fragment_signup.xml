@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background"
+    >
+
+    <ImageView
+        android:id="@+id/signUpTransferImage"
+        android:layout_width="62dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="88dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/transfer"
+        />
+
+    <TextView
+        android:id="@+id/signUpHeaderText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="450dp"
+        android:layout_marginTop="7dp"
+        android:text="@string/screen_sign_in.no_name"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signUpTransferImage"
+        app:layout_constraintVertical_bias="0.0"
+        style="@style/HeaderText"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/signUpUserTextField"
+        android:layout_width="232dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="start"
+        android:gravity="start"
+        android:layout_marginEnd="64dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="69dp"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUpHeaderText"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signUpUserEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/text_width_line"
+            android:hint="@string/text_hint.user"
+            style="@style/SignUpEditText"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/signUpMailTextField"
+        android:layout_width="232dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="start"
+        android:gravity="start"
+        android:layout_marginEnd="64dp"
+        android:layout_marginStart="64dp"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUpUserTextField"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signUpMailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/text_width_line"
+            android:hint="@string/text_hint.email"
+            style="@style/SignUpEditText"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/signUpPassTextField"
+        android:layout_width="232dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="start"
+        android:gravity="start"
+        android:layout_marginEnd="64dp"
+        android:layout_marginStart="64dp"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUpMailTextField"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signUpPassEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/text_width_line"
+            android:hint="@string/text_hint.password"
+            style="@style/SignUpEditText"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/signUpCreateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/cairo_bold"
+        android:layout_margin="20dp"
+        android:layout_marginEnd="146dp"
+        android:layout_marginStart="146dp"
+        android:layout_marginTop="41dp"
+        android:letterSpacing="0.02"
+        android:lineSpacingExtra="27sp"
+        android:padding="10dp"
+        android:text="@string/text_button.create"
+        android:textAllCaps="true"
+        android:textColor="@color/text.button_transparent"
+        android:textSize="@dimen/text_size.regular_big"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUpPassTextField"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/signUpProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="invisible"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="5dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

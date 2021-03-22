@@ -44,6 +44,14 @@
         <item name="android:textSize">@dimen/text_size.medium</item>
     </style>
 
+    <style name="SignUpEditText" parent="@android:style/TextAppearance">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">@color/filled.textField</item>
+        <item name="android:drawablePadding">20dp</item>
+        <item name="android:textSize">@dimen/text_size.medium</item>
+        <item name="android:fontFamily">@font/cairo_light</item>
+    </style>
+
     <style name="TextStyle.Link" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/text_size.small</item>
