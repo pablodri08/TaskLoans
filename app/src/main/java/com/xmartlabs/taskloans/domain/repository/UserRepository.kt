@@ -1,5 +1,6 @@
 package com.xmartlabs.taskloans.domain.repository
 
+import com.xmartlabs.taskloans.data.model.User
 import com.xmartlabs.taskloans.data.repository.auth.UserLocalSource
 import com.xmartlabs.taskloans.data.repository.auth.UserRemoteSource
 import com.xmartlabs.taskloans.data.repository.session.SessionLocalSource
@@ -15,11 +16,10 @@ class UserRepository(
 
   suspend fun signIn(id: String, password: String) =
       userRemoteSource.signIn(id, password)
-          .let { response ->
-            userLocalSource.createUser(response.user)
-            sessionLocalSource.setSession(response.user, response.token)
-            response.user
-          }
+          .also { (token: String?, user: User?) ->
+              userLocalSource.createUser(user!!)
+              sessionLocalSource.setSession(user, token!!)
+          }.user!!
 
   suspend fun getCurrentUser() = sessionLocalSource.getSessionUser()
 

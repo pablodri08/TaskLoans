@@ -38,7 +38,7 @@ object RepositoryDiModuleProvider {
     single { LocationRemoteSource(get()) }
     single { LocationLocalSource(get()) }
     single { UserLocalSource() }
-    single { UserRemoteSource() }
+    single { UserRemoteSource(get()) }
     single { SessionLocalSource(get()) }
   }
   val repositories = module {
