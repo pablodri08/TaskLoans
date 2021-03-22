@@ -4,7 +4,6 @@ import com.xmartlabs.taskloans.data.model.User
 import com.xmartlabs.taskloans.data.repository.auth.UserLocalSource
 import com.xmartlabs.taskloans.data.repository.auth.UserRemoteSource
 import com.xmartlabs.taskloans.data.repository.session.SessionLocalSource
-import java.lang.Exception
 
 /**
  * Created by mirland on 25/04/20.
@@ -17,10 +16,10 @@ class UserRepository(
 
   suspend fun signIn(id: String, password: String) =
       userRemoteSource.signIn(id, password)
-          .also { (token: String, user: User) ->
-              userLocalSource.createUser(user)
-              sessionLocalSource.setSession(user, token)
-          }.user
+          .also { (token: String?, user: User?) ->
+              userLocalSource.createUser(user!!)
+              sessionLocalSource.setSession(user, token!!)
+          }.user!!
 
   suspend fun getCurrentUser() = sessionLocalSource.getSessionUser()
 

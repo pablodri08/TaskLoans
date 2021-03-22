@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">TaskLoans</string>
     <string name="screen_sign_in.no_name">noname</string>
-    <string name="user">Email</string>
-    <string name="password">Contraseña</string>
-    <string name="enter">entrar</string>
-    <string name="create_account">Sin cuenta? <u>Crea una nueva</u> </string>
+    <string name="text_hint.email">Email</string>
+    <string name="text_hint.password">Contraseña</string>
+    <string name="text_button.enter">entrar</string>
+    <string name="text_button.create_account">Sin cuenta? <u>Crea una nueva</u> </string>
+    <string name="text_toast.error_input">Invalid input</string>
+    <string name="text_toast.invalid_user">Invalid Credentials</string>
 </resources>

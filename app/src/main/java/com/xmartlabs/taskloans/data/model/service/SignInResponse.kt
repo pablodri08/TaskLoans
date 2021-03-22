@@ -8,5 +8,6 @@ import com.xmartlabs.taskloans.data.model.User
  */
 data class SignInResponse(
     @SerializedName("auth_token")
-    val token: String,
-    val user: User)
+    val token: String?,
+    val user: User?
+)
