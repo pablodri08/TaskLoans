@@ -1,4 +1,4 @@
-package com.xmartlabs.taskloans.data.repository.common
+package com.xmartlabs.taskloans.data.common
 
 class InvalidUserException(message: String) : Exception(message)
 

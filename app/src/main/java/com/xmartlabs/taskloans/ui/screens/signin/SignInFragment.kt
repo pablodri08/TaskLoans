@@ -9,8 +9,8 @@ import com.xmartlabs.swissknife.core.extensions.enable
 import com.xmartlabs.swissknife.core.extensions.gone
 import com.xmartlabs.swissknife.core.extensions.visible
 import com.xmartlabs.taskloans.R
-import com.xmartlabs.taskloans.data.repository.common.InvalidUserException
-import com.xmartlabs.taskloans.data.repository.common.ServerException
+import com.xmartlabs.taskloans.data.common.InvalidUserException
+import com.xmartlabs.taskloans.data.common.ServerException
 import com.xmartlabs.taskloans.databinding.FragmentSigninBinding
 import com.xmartlabs.taskloans.ui.common.BaseViewBindingFragment
 import com.xmartlabs.taskloans.ui.common.UIHelper
@@ -43,7 +43,7 @@ class SignInFragment : BaseViewBindingFragment<FragmentSigninBinding>() {
             signInEnterButton.enable()
           }
           if (throwable is InvalidUserException) {
-             displayError(getString(R.string.text_toast_error_input))
+            displayError(getString(R.string.text_toast_error_notmatch))
           } else if (throwable is ServerException) {
             displayError(getString(R.string.text_toast_error_server))
           }
@@ -72,12 +72,13 @@ class SignInFragment : BaseViewBindingFragment<FragmentSigninBinding>() {
             signInPasswordTextField.editText?.text.toString()
         )
       } else {
-        Toast.makeText(
-            requireContext(),
-            getString(R.string.text_toast_error_input),
-            Toast.LENGTH_SHORT
-        ).show()
+        displayError(getString(R.string.text_toast_error_input))
       }
+    }
+    signInCreateAccount.setOnClickListener {
+      router.navigate(
+          SignInFragmentDirections.actionSignInFragmentToSignUpFragment()
+      )
     }
   }
 

@@ -9,19 +9,13 @@ import com.xmartlabs.swissknife.core.extensions.enable
 import com.xmartlabs.swissknife.core.extensions.gone
 import com.xmartlabs.swissknife.core.extensions.visible
 import com.xmartlabs.taskloans.R
-import com.xmartlabs.taskloans.data.repository.common.InvalidUserException
-import com.xmartlabs.taskloans.data.repository.common.ServerException
-import com.xmartlabs.taskloans.data.repository.common.UserConflictException
-import com.xmartlabs.taskloans.databinding.FragmentSigninBinding
+import com.xmartlabs.taskloans.data.common.ServerException
+import com.xmartlabs.taskloans.data.common.UserConflictException
 import com.xmartlabs.taskloans.databinding.FragmentSignupBinding
 import com.xmartlabs.taskloans.ui.common.BaseViewBindingFragment
 import com.xmartlabs.taskloans.ui.common.UIHelper
 import com.xmartlabs.taskloans.ui.common.extensions.observeStateResult
-import com.xmartlabs.taskloans.ui.screens.signin.SignInFragmentDirections
-import com.xmartlabs.taskloans.ui.screens.signin.SignInFragmentViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import kotlin.time.ExperimentalTime
-
 
 class SignUpFragment : BaseViewBindingFragment<FragmentSignupBinding>() {
   private val viewModel: SignUpFragmentViewModel by viewModel()
@@ -43,18 +37,16 @@ class SignUpFragment : BaseViewBindingFragment<FragmentSignupBinding>() {
             signUpProgressBar.gone()
             signUpCreateButton.enable()
           }
-          if (throwable is InvalidUserException) {
-            displayError(getString(R.string.text_toast_error_input))
+          if (throwable is UserConflictException) {
+            displayError(getString(R.string.text_toast_error_user_conflict))
           } else if (throwable is ServerException) {
             displayError(getString(R.string.text_toast_error_server))
-          } else if (throwable is UserConflictException) {
-            displayError(getString(R.string.text_toast_error_user_conflict))
           }
         },
         onSuccess = {
           withViewBinding { signUpProgressBar.gone() }
           router.navigate(
-              SignInFragmentDirections.actionSignInFragmentToWelcomeFragment()
+              SignUpFragmentDirections.actionSignUpFragmentToSignInFragment()
           )
         }
     )

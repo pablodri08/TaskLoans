@@ -10,12 +10,9 @@
     <color name="outlined.textField">@color/dark_grey</color>
     <color name="filled.textField">@color/white</color>
 
-    <color name="primaryColor">@color/pink</color>
-    <color name="primaryDarkColor">@color/pink_dark</color>
     <color name="butterscotch">#fac633</color>
     <color name="red_violet">#9d0066</color>
     <color name="pink">#d41a67</color>
-    <color name="pink_dark">#9d003d</color>
     <color name="dark_purple">#7E1579</color>
     <color name="white">#ffffff</color>
     <color name="grey">#e2e2e2</color>
