@@ -14,7 +14,7 @@ class UserLocalSource {
   suspend fun createUser(user: User): User = withContext(Dispatchers.IO) {
     @Suppress("MagicNumber")
     delay(50)
-    localUsers[user.id] = user
+    localUsers[user.password] = user
     user
   }
 

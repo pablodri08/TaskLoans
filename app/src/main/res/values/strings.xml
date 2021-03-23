@@ -9,4 +9,6 @@
     <string name="text_button.create">Crear Cuenta</string>
     <string name="text_toast.error_input">Invalid input</string>
     <string name="text_toast.invalid_user">Invalid Credentials</string>
+    <string name="text_toast.error_server">Something went wrong. Try again!</string>
+    <string name="text_toast_error_user_conflict">User already exist!</string>
 </resources>

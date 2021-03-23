@@ -18,14 +18,9 @@ import kotlin.time.ExperimentalTime
  * Created by mirland on 25/04/20.
  */
 class SignInFragmentViewModel(
-    private val signInUseCase: SignInUseCase,
-    timeTrackerUseCase: TimeTrackerUseCase
+    private val signInUseCase: SignInUseCase
 ) : ViewModel() {
   private val signInMutableLiveData = MutableLiveData<SignInUseCase.Params>()
-
-  @OptIn(ExperimentalTime::class)
-  val viewModelTime: LiveData<Result<Duration>> = timeTrackerUseCase.invoke(TimeTrackerUseCase.Params(Date()))
-      .asLiveData()
   val signIn: LiveData<ProcessState<User>> = signInMutableLiveData
       .switchMap { params -> signInUseCase.invokeAsLiveData(params) }
 
