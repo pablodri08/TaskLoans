@@ -14,12 +14,18 @@ class UserRepository(
     private val sessionLocalSource: SessionLocalSource
 ) {
 
-  suspend fun signIn(id: String, password: String) =
-      userRemoteSource.signIn(id, password)
-          .also { (token: String?, user: User?) ->
-              userLocalSource.createUser(user!!)
-              sessionLocalSource.setSession(user, token!!)
-          }.user!!
+  suspend fun signIn(id: String, password: String): User {
+    val response = userRemoteSource.signIn(id, password)
+    userLocalSource.createUser(response.user!!)
+    sessionLocalSource.setSession(response.user, response.token!!)
+    return response.user
+  }
+
+  suspend fun signUp(email: String, password: String, name: String): User {
+    val response = userRemoteSource.signUp(email, password, name)
+    userLocalSource.createUser(response.user!!)
+    return response.user
+  }
 
   suspend fun getCurrentUser() = sessionLocalSource.getSessionUser()
 

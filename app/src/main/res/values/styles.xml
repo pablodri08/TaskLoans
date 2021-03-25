@@ -44,15 +44,19 @@
         <item name="android:textSize">@dimen/text_size.medium</item>
     </style>
 
+    <style name="SignUpEditText" parent="@android:style/TextAppearance">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">@color/filled.textField</item>
+        <item name="android:drawablePadding">20dp</item>
+        <item name="android:textSize">@dimen/text_size.medium</item>
+        <item name="android:fontFamily">@font/cairo_light</item>
+    </style>
+
     <style name="TextStyle.Link" parent="@android:style/TextAppearance">
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/text.link</item>
         <item name="android:textSize">@dimen/text_size.small</item>
         <item name="android:letterSpacing">0.02</item>
         <item name="android:lineSpacingExtra">33sp</item>
         <item name="android:fontFamily">@font/cairo_regular</item>
-    </style>
-
-    <style name="FontCairo" parent="@android:style/TextAppearance.Small">
-        <item name="android:fontFamily">@font/cairo</item>
     </style>
 </resources>

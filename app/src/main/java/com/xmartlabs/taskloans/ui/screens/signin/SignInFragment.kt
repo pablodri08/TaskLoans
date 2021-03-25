@@ -2,7 +2,6 @@ package com.xmartlabs.taskloans.ui.screens.signin
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Patterns
 import android.view.View
 import android.widget.Toast
 import com.xmartlabs.swissknife.core.extensions.disable
@@ -10,10 +9,12 @@ import com.xmartlabs.swissknife.core.extensions.enable
 import com.xmartlabs.swissknife.core.extensions.gone
 import com.xmartlabs.swissknife.core.extensions.visible
 import com.xmartlabs.taskloans.R
+import com.xmartlabs.taskloans.data.common.InvalidUserException
+import com.xmartlabs.taskloans.data.common.ServerException
 import com.xmartlabs.taskloans.databinding.FragmentSigninBinding
 import com.xmartlabs.taskloans.ui.common.BaseViewBindingFragment
+import com.xmartlabs.taskloans.ui.common.UIHelper
 import com.xmartlabs.taskloans.ui.common.extensions.observeStateResult
-import kotlinx.android.synthetic.main.fragment_signin.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.time.ExperimentalTime
 
@@ -41,12 +42,10 @@ class SignInFragment : BaseViewBindingFragment<FragmentSigninBinding>() {
             signInProgressBar.gone()
             signInEnterButton.enable()
           }
-          if (throwable.message!!.contains("Unauthorized")) {
-            Toast.makeText(
-                requireContext(),
-                getString(R.string.text_toast_invalid_user),
-                Toast.LENGTH_SHORT
-            ).show()
+          if (throwable is InvalidUserException) {
+            displayError(getString(R.string.text_toast_error_notmatch))
+          } else if (throwable is ServerException) {
+            displayError(getString(R.string.text_toast_error_server))
           }
         },
         onSuccess = {
@@ -60,10 +59,12 @@ class SignInFragment : BaseViewBindingFragment<FragmentSigninBinding>() {
 
   private fun setupButtons() = withViewBinding {
     signInEnterButton.setOnClickListener {
-      if (validateMail(signInUserTextField.editText?.text.toString()) &&
-      validatePassword(signInPasswordEditText.text.toString())) {
-        signInUserTextField.error = null
-        signInPasswordTextField.error = null
+      val errorInputMessage = getString(R.string.text_toast_error_input)
+      val isValidMail = UIHelper.validateMail(signInUserTextField.editText?.text.toString())
+      val isValidPassword = UIHelper.validatePassword(signInPasswordEditText.text.toString())
+      UIHelper.showTextFieldError(isValidMail, signInUserTextField, errorInputMessage)
+      UIHelper.showTextFieldError(isValidPassword, signInPasswordTextField, errorInputMessage)
+      if (isValidMail && isValidPassword) {
         signInEnterButton.disable()
         signInProgressBar.visible()
         viewModel.signIn(
@@ -71,24 +72,19 @@ class SignInFragment : BaseViewBindingFragment<FragmentSigninBinding>() {
             signInPasswordTextField.editText?.text.toString()
         )
       } else {
-        Toast.makeText(
-            requireContext(),
-            getString(R.string.text_toast_error_input),
-            Toast.LENGTH_SHORT
-        ).show()
+        displayError(getString(R.string.text_toast_error_input))
       }
     }
-  }
-
-  private fun validateMail(mail: String) = Patterns.EMAIL_ADDRESS.matcher(mail).matches().also {
-    if (!it) {
-      signInUserTextField.error = getString(R.string.text_toast_error_input)
+    signInCreateAccount.setOnClickListener {
+      router.navigate(
+          SignInFragmentDirections.actionSignInFragmentToSignUpFragment()
+      )
     }
   }
 
-  private fun validatePassword(password: String) = password.isNotEmpty().also {
-    if (!it) {
-      signInPasswordTextField.error = getString(R.string.text_toast_error_input)
-    }
-  }
+  private fun displayError(error: String) = Toast.makeText(
+      requireContext(),
+      error,
+      Toast.LENGTH_SHORT
+  ).show()
 }

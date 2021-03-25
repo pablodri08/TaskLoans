@@ -6,7 +6,7 @@ import com.xmartlabs.taskloans.data.model.User
 /**
  * Created by mirland on 03/05/20.
  */
-data class SignInResponse(
+data class AuthResponse(
     @SerializedName("auth_token")
     val token: String?,
     val user: User?

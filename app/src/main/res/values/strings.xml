@@ -1,10 +1,15 @@
 <resources>
     <string name="app_name">TaskLoans</string>
     <string name="screen_sign_in.no_name">noname</string>
+    <string name="text_hint.user">Usuario</string>
     <string name="text_hint.email">Email</string>
     <string name="text_hint.password">Contraseña</string>
     <string name="text_button.enter">entrar</string>
     <string name="text_button.create_account">Sin cuenta? <u>Crea una nueva</u> </string>
+    <string name="text_button.create">Crear Cuenta</string>
     <string name="text_toast.error_input">Invalid input</string>
-    <string name="text_toast.invalid_user">Invalid Credentials</string>
+    <string name="text_toast.error_server">Something went wrong. Try again!</string>
+    <string name="text_toast_error_user_conflict">User already exist!</string>
+    <string name="text_toast_error_notmatch">User and password does not match!</string>
+    <string name="content_description.transfer_image">Header Transfer Image</string>
 </resources>

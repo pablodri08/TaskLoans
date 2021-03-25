@@ -10,7 +10,7 @@
     >
 
     <ImageView
-        android:id="@+id/signInTransferImage"
+        android:id="@+id/signUpTransferImage"
         android:contentDescription="@string/content_description.transfer_image"
         android:layout_width="62dp"
         android:layout_height="49dp"
@@ -22,7 +22,7 @@
         />
 
     <TextView
-        android:id="@+id/signInHeaderText"
+        android:id="@+id/signUpHeaderText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="450dp"
@@ -32,110 +32,115 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/signInTransferImage"
+        app:layout_constraintTop_toBottomOf="@id/signUpTransferImage"
         app:layout_constraintVertical_bias="0.0"
         style="@style/HeaderText"
         />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/signInUserTextField"
-        android:layout_width="280dp"
-        android:layout_height="45dp"
-        android:hint="@string/text_hint.email"
-        android:layout_marginEnd="40dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="81dp"
+        android:id="@+id/signUpUserTextField"
+        android:layout_width="232dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="start"
+        android:gravity="start"
+        android:layout_marginEnd="64dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="69dp"
         app:hintEnabled="false"
-        app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInHeaderText"
-        app:startIconDrawable="@drawable/filled"
-        app:startIconTint="@color/background.icon_transparent"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        app:layout_constraintTop_toBottomOf="@+id/signUpHeaderText"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
         >
 
         <com.google.android.material.textfield.TextInputEditText
-
-            android:id="@+id/signInUserEditText"
+            android:id="@+id/signUpUserEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/cairo_light"
-            android:hint="@string/text_hint.email"
-            android:textColorHint="@color/text.hints"
-            style="@style/SignInEditText"
+            android:background="@drawable/text_width_line"
+            android:hint="@string/text_hint.user"
+            style="@style/SignUpEditText"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/signInPasswordTextField"
-        android:layout_width="280dp"
-        android:layout_height="45dp"
-        android:fontFamily="@font/cairo"
-        android:hint="@string/text_hint.password"
-        android:layout_marginEnd="40dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="25dp"
+        android:id="@+id/signUpMailTextField"
+        android:layout_width="232dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="start"
+        android:gravity="start"
+        android:layout_marginEnd="64dp"
+        android:layout_marginStart="64dp"
         app:hintEnabled="false"
-        app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInUserTextField"
-        app:startIconDrawable="@drawable/shape"
-        app:startIconTint="@color/background.icon"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        app:layout_constraintTop_toBottomOf="@+id/signUpUserTextField"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
         >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/signInPasswordEditText"
+            android:id="@+id/signUpMailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/cairo_light"
+            android:background="@drawable/text_width_line"
+            android:hint="@string/text_hint.email"
+            style="@style/SignUpEditText"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/signUpPassTextField"
+        android:layout_width="232dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="start"
+        android:gravity="start"
+        android:layout_marginEnd="64dp"
+        android:layout_marginStart="64dp"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUpMailTextField"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signUpPassEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/text_width_line"
             android:hint="@string/text_hint.password"
-            android:textColorHint="@color/text.hints"
-            style="@style/SignInEditText"
+            style="@style/SignUpEditText"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/signInEnterButton"
+        android:id="@+id/signUpCreateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/cairo_bold"
         android:layout_margin="20dp"
         android:layout_marginEnd="146dp"
         android:layout_marginStart="146dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="41dp"
         android:letterSpacing="0.02"
         android:lineSpacingExtra="27sp"
         android:padding="10dp"
-        android:text="@string/text_button.enter"
+        android:text="@string/text_button.create"
         android:textAllCaps="true"
         android:textColor="@color/text.button_transparent"
         android:textSize="@dimen/text_size.regular_big"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInPasswordTextField"
+        app:layout_constraintTop_toBottomOf="@+id/signUpPassTextField"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         />
 
-    <TextView
-        android:id="@+id/signInCreateAccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/text_button.create_account"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInEnterButton"
-        style="@style/TextStyle.Link"
-        />
-
     <com.google.android.material.progressindicator.LinearProgressIndicator
-        android:id="@+id/signInProgressBar"
+        android:id="@+id/signUpProgressBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:indeterminate="true"

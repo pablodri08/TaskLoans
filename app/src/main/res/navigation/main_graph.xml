@@ -22,6 +22,14 @@
             app:enterAnim="@anim/fragment_fade_enter"
             />
 
+        <action
+            android:id="@+id/action_signInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment"
+            app:popUpTo="@id/signInFragment"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/fragment_fade_enter"
+            />
+
     </fragment>
 
     <fragment
@@ -30,6 +38,23 @@
         android:label="WelcomeFragment"
         tools:layout="@layout/fragment_welcome"
         />
+
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.xmartlabs.taskloans.ui.screens.signup.SignUpFragment"
+        android:label="SignUpFragment"
+        tools:layout="@layout/fragment_signup"
+        >
+
+        <action
+            android:id="@+id/action_signUpFragment_to_signInFragment"
+            app:destination="@id/signInFragment"
+            app:popUpTo="@id/signUpFragment"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/fragment_fade_enter"
+            />
+
+    </fragment>
 
     <fragment
         android:id="@+id/splashFragment"
