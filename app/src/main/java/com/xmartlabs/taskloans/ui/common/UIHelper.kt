@@ -8,11 +8,9 @@ object UIHelper {
 
   fun validatePassword(password: String) = password.isNotEmpty()
 
-  fun showTextFieldError(validator: Boolean, textField: TextInputLayout, message: String) {
-    if (validator) {
-      textField.error = null
-    } else {
-      textField.error = message
-    }
+  fun showTextFieldError(validator: Boolean, textField: TextInputLayout, message: String) = if (validator) {
+    textField.error = null
+  } else {
+    textField.error = message
   }
 }

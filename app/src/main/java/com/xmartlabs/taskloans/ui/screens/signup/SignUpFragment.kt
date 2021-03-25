@@ -37,11 +37,8 @@ class SignUpFragment : BaseViewBindingFragment<FragmentSignupBinding>() {
             signUpProgressBar.gone()
             signUpCreateButton.enable()
           }
-          if (throwable is UserConflictException) {
-            displayError(getString(R.string.text_toast_error_user_conflict))
-          } else if (throwable is ServerException) {
-            displayError(getString(R.string.text_toast_error_server))
-          }
+          if (throwable is UserConflictException) displayError(getString(R.string.text_toast_error_user_conflict))
+          else if (throwable is ServerException) displayError(getString(R.string.text_toast_error_server))
         },
         onSuccess = {
           withViewBinding { signUpProgressBar.gone() }
