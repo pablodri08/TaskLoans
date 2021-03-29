@@ -15,16 +15,16 @@
         >
 
         <action
-            android:id="@+id/action_signInFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment"
+            android:id="@+id/action_signInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment"
             app:popUpTo="@id/signInFragment"
             app:popUpToInclusive="true"
             app:enterAnim="@anim/fragment_fade_enter"
             />
 
         <action
-            android:id="@+id/action_signInFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment"
+            android:id="@+id/action_signInFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment"
             app:popUpTo="@id/signInFragment"
             app:popUpToInclusive="true"
             app:enterAnim="@anim/fragment_fade_enter"
@@ -33,10 +33,10 @@
     </fragment>
 
     <fragment
-        android:id="@+id/welcomeFragment"
-        android:name="com.xmartlabs.taskloans.ui.screens.welcome.WelcomeFragment"
-        android:label="WelcomeFragment"
-        tools:layout="@layout/fragment_welcome"
+        android:id="@+id/dashboardFragment"
+        android:name="com.xmartlabs.taskloans.ui.screens.dashboard.DashboardFragment"
+        android:label="DashboardFragment"
+        tools:layout="@layout/fragment_dashboard"
         />
 
     <fragment
@@ -70,8 +70,8 @@
             />
 
         <action
-            android:id="@+id/action_splashFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment"
+            android:id="@+id/action_splashFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true"
             />

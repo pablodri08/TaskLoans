@@ -3,17 +3,19 @@
     <color name="background.outlined_textField">@android:color/white</color>
     <color name="background.textFieldIcon">@color/grey</color>
     <color name="background.icon_transparent">@color/dark_grey2</color>
+    <color name="primary_color">@color/darkish_purple</color>
     <color name="background.icon">@color/dark_grey</color>
     <color name="text.hints">@color/dark_grey</color>
     <color name="text.button_transparent">@color/white</color>
     <color name="text.link">@color/white</color>
     <color name="outlined.textField">@color/dark_grey</color>
     <color name="filled.textField">@color/white</color>
+    <color name="tab_dashboard.indicator_color">@color/white</color>
 
     <color name="butterscotch">#fac633</color>
     <color name="red_violet">#9d0066</color>
     <color name="pink">#d41a67</color>
-    <color name="dark_purple">#7E1579</color>
+    <color name="darkish_purple">#761371</color>
     <color name="white">#ffffff</color>
     <color name="grey">#e2e2e2</color>
     <color name="dark_grey">#676767</color>
