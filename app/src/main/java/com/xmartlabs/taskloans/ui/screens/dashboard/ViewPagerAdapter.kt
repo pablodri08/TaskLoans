@@ -8,7 +8,7 @@ import com.xmartlabs.taskloans.ui.screens.dashboard.tabs.HistoryFragment
 import com.xmartlabs.taskloans.ui.screens.dashboard.tabs.HomeFragment
 import com.xmartlabs.taskloans.ui.screens.dashboard.tabs.TeamFragment
 
-class ViewPageAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
+class ViewPageAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
   companion object {
     private const val TAB_ITEMS = 3
   }

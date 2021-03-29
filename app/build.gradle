@@ -127,7 +127,6 @@ dependencies {
     implementation deps.androidX.constraintLayout
     implementation deps.androidX.dataStore
     implementation deps.androidX.design
-    implementation deps.androidX.legacysupport
     implementation deps.androidX.lifecycle.livedata
     implementation deps.androidX.lifecycle.runtime
     implementation deps.androidX.lifecycle.saveState

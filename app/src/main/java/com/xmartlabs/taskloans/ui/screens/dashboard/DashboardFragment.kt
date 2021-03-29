@@ -25,22 +25,16 @@ class DashboardFragment : BaseViewBindingFragment<FragmentDashboardBinding>() {
 
   private fun setupViewModel() = with(viewModel) {
     userLiveData.observeFinishSuccessResult(viewLifecycleOwner) { user ->
-      viewBinding.toolbar.title = requireNotNull(user).name
+      viewBinding.toolbar.title = user?.name
     }
   }
 
   private fun setupTabLayoutMediator() {
     val tabLayoutMediator = TabLayoutMediator(tabLayout, pager) { tab, position ->
       when (TabItem.values()[position]) {
-        TabItem.HOME -> {
-          tab.setIcon(TabItem.HOME.iconResId)
-        }
-        TabItem.HISTORY -> {
-          tab.setIcon(TabItem.HISTORY.iconResId)
-        }
-        TabItem.TEAM -> {
-          tab.setIcon(TabItem.TEAM.iconResId)
-        }
+        TabItem.HOME -> tab.setIcon(TabItem.HOME.iconResId)
+        TabItem.HISTORY -> tab.setIcon(TabItem.HISTORY.iconResId)
+        TabItem.TEAM -> tab.setIcon(TabItem.TEAM.iconResId)
       }
     }
     tabLayoutMediator.attach()
