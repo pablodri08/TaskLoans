@@ -14,14 +14,12 @@ class ViewPageAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
     private const val TAB_ITEMS = 3
   }
 
-  override fun getItemCount(): Int = TAB_ITEMS
+  override fun getItemCount() = TAB_ITEMS
 
-  override fun createFragment(position: Int): Fragment {
-    return when (TabItem.values()[position]) {
-      TabItem.HOME -> HomeFragment()
-      TabItem.HISTORY -> HistoryFragment()
-      TabItem.TEAM -> TeamFragment()
-    }
+  override fun createFragment(position: Int) = when (TabItem.values()[position]) {
+    TabItem.HOME -> HomeFragment()
+    TabItem.HISTORY -> HistoryFragment()
+    TabItem.TEAM -> TeamFragment()
   }
 }
 

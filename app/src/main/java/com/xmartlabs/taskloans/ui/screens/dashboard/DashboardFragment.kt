@@ -20,7 +20,17 @@ class DashboardFragment : BaseViewBindingFragment<FragmentDashboardBinding>() {
     setupScreenToolbar(viewBinding.toolbar, hasUpButton = false)
     setupViewModel()
     pager.adapter = adapter
-    val tabLayoutMediator = TabLayoutMediator(tab_layout, pager) { tab, position ->
+    setupTabLayoutMediator()
+  }
+
+  private fun setupViewModel() = with(viewModel) {
+    userLiveData.observeFinishSuccessResult(viewLifecycleOwner) { user ->
+      viewBinding.toolbar.title = requireNotNull(user).name
+    }
+  }
+
+  private fun setupTabLayoutMediator() {
+    val tabLayoutMediator = TabLayoutMediator(tabLayout, pager) { tab, position ->
       when (TabItem.values()[position]) {
         TabItem.HOME -> {
           tab.setIcon(TabItem.HOME.iconResId)
@@ -34,11 +44,5 @@ class DashboardFragment : BaseViewBindingFragment<FragmentDashboardBinding>() {
       }
     }
     tabLayoutMediator.attach()
-  }
-
-  private fun setupViewModel() = with(viewModel) {
-    userLiveData.observeFinishSuccessResult(viewLifecycleOwner) { user ->
-      viewBinding.toolbar.title = requireNotNull(user).name
-    }
   }
 }

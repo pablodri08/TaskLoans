@@ -19,6 +19,7 @@ versions.androidXCardView = "1.0.0"
 versions.androidXConstraintLayout = "2.0.4"
 versions.androidXCore = "1.2.0"
 versions.androidXDataStore = "1.0.0-alpha06"
+versions.androidXLegacySupport = "1.0.0"
 versions.androidXLifecycle = "2.3.0"
 versions.androidXMaterial = "1.3.0"
 versions.androidXPercentLayout = "1.0.0"
@@ -119,6 +120,7 @@ androidXRoom.compiler = "androidx.room:room-compiler:$versions.androidXRoom"
 androidXRoom.coreKtx = "androidx.room:room-ktx:$versions.androidXRoom"
 
 def androidX = [:]
+androidX.legacysupport = "androidx.legacy:legacy-support-v4:$versions.androidXLegacySupport"
 androidX.lifecycle = androidXLifecycle
 androidX.navigation = androidXNavigation
 androidX.room = androidXRoom
