@@ -1,7 +1,6 @@
 package com.xmartlabs.taskloans.ui.screens.dashboard
 
 import androidx.annotation.DrawableRes
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.xmartlabs.taskloans.R
