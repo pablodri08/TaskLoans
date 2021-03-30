@@ -51,7 +51,7 @@ class SignInFragment : BaseViewBindingFragment<FragmentSigninBinding>() {
         onSuccess = {
           withViewBinding { signInProgressBar.gone() }
           router.navigate(
-              SignInFragmentDirections.actionSignInFragmentToWelcomeFragment()
+              SignInFragmentDirections.actionSignInFragmentToDashboardFragment()
           )
         }
     )

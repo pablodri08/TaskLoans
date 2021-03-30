@@ -18,7 +18,7 @@ class SplashFragment : BaseFragment() {
         onFailure = { ex -> throw IllegalStateException("Invalid state", ex) },
         onSuccess = { sessionType ->
           val direction = when (sessionType) {
-            SessionType.LOGGED -> SplashFragmentDirections.actionSplashFragmentToWelcomeFragment()
+            SessionType.LOGGED -> SplashFragmentDirections.actionSplashFragmentToDashboardFragment()
             SessionType.NOT_LOGGED ->
               SplashFragmentDirections.actionSplashFragmentToSignInFragment()
           }
