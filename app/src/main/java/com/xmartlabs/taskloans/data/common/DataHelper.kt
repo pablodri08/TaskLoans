@@ -4,6 +4,7 @@ import retrofit2.HttpException
 
 object DataHelper {
   private const val ERROR_INVALID_USER = 401
+  private const val ERROR_INVALID_TOKEN = 404
   private const val ERROR_USER_CONFLICT = 409
 
   suspend fun <T> mapServiceError(errorMapper: (HttpException) -> Exception, serviceCall: suspend () -> T): T = try {
@@ -15,6 +16,7 @@ object DataHelper {
   fun serviceErrorMapper(e: HttpException): Exception = when (e.code()) {
     ERROR_INVALID_USER -> InvalidUserException(e.message())
     ERROR_USER_CONFLICT -> UserConflictException(e.message())
+    ERROR_INVALID_TOKEN -> TokenExpiredException(e.message())
     else -> ServerException(e.message())
   }
 }

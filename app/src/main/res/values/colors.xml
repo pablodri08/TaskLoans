@@ -8,16 +8,21 @@
     <color name="text.hints">@color/dark_grey</color>
     <color name="text.button_transparent">@color/white</color>
     <color name="text.link">@color/white</color>
+    <color name="text.list_item_team">@color/black</color>
     <color name="outlined.textField">@color/dark_grey</color>
     <color name="filled.textField">@color/white</color>
     <color name="tab_dashboard.indicator_color">@color/white</color>
+    <color name="floating_action_button">@color/butterscotch</color>
+    <color name="item_divider">@color/light_grey</color>
 
     <color name="butterscotch">#fac633</color>
     <color name="red_violet">#9d0066</color>
     <color name="pink">#d41a67</color>
     <color name="darkish_purple">#761371</color>
     <color name="white">#ffffff</color>
+    <color name="light_grey">#de000000</color>
     <color name="grey">#e2e2e2</color>
     <color name="dark_grey">#676767</color>
     <color name="dark_grey2">#070707</color>
+    <color name="black">#000000</color>
 </resources>

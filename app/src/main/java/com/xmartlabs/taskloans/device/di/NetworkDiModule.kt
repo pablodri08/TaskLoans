@@ -5,9 +5,11 @@ import com.xmartlabs.taskloans.data.service.LocationServiceApi
 import com.xmartlabs.taskloans.data.service.NetworkDebugInterceptors
 import com.xmartlabs.taskloans.data.service.NetworkLayerCreator
 import com.xmartlabs.taskloans.data.service.AuthServiceApi
+import com.xmartlabs.taskloans.data.service.TaskServiceApi
 import okhttp3.Interceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
+import com.xmartlabs.taskloans.data.service.interceptors.HttpInterceptor
 
 /**
  * Created by mirland on 28/04/20.
@@ -16,6 +18,7 @@ object NetworkDiModule {
   val network = module {
     single { get<Retrofit>().create(LocationServiceApi::class.java) }
     single { get<Retrofit>().create(AuthServiceApi::class.java) }
+    single { get<Retrofit>().create(TaskServiceApi::class.java) }
     single {
       val debugInterceptors = NetworkDebugInterceptors.createDebugInterceptors(
           useOkHttpInterceptor = Config.ANDROID_SYSTEM_LOG_ENABLED,
@@ -23,7 +26,7 @@ object NetworkDiModule {
           useStethoInterceptor = Config.STETHO_ENABLED
       )
       // TODO: Add session interceptor and refresh token interceptor
-      val sessionInterceptors = listOf<Interceptor>()
+      val sessionInterceptors = listOf<Interceptor>(HttpInterceptor(get()))
       NetworkLayerCreator.createRetrofitInstance(Config.API_BASE_URL,
           sessionInterceptors + debugInterceptors)
     }

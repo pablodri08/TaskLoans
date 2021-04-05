@@ -15,6 +15,8 @@ import com.xmartlabs.taskloans.domain.repository.LocationRepository
 import com.xmartlabs.taskloans.domain.repository.SessionRepository
 import com.xmartlabs.taskloans.domain.repository.UserRepository
 import com.xmartlabs.swissknife.datastore.DataStoreSource
+import com.xmartlabs.taskloans.data.repository.task.TaskRemoteSource
+import com.xmartlabs.taskloans.domain.repository.TaskRepository
 import org.koin.dsl.module
 
 /**
@@ -40,10 +42,12 @@ object RepositoryDiModuleProvider {
     single { UserLocalSource() }
     single { UserRemoteSource(get()) }
     single { SessionLocalSource(get()) }
+    single { TaskRemoteSource(get()) }
   }
   val repositories = module {
     single { LocationRepository(get(), get()) }
     single { UserRepository(get(), get(), get()) }
     single { SessionRepository(get()) }
+    single { TaskRepository(get()) }
   }
 }
