@@ -12,8 +12,8 @@ import androidx.navigation.NavOptions
 import androidx.navigation.Navigator
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import com.xmartlabs.taskloans.device.logger.NavigationLogger
 import com.xmartlabs.swissknife.navigation.extensions.navigateSafe
+import com.xmartlabs.taskloans.device.logger.NavigationLogger
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 

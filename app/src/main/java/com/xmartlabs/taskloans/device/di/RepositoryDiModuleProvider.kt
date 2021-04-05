@@ -3,6 +3,7 @@ package com.xmartlabs.taskloans.device.di
 import android.content.Context
 import androidx.datastore.preferences.createDataStore
 import androidx.room.Room
+import com.xmartlabs.swissknife.datastore.DataStoreSource
 import com.xmartlabs.taskloans.Config
 import com.xmartlabs.taskloans.data.repository.auth.UserLocalSource
 import com.xmartlabs.taskloans.data.repository.auth.UserRemoteSource
@@ -11,12 +12,11 @@ import com.xmartlabs.taskloans.data.repository.location.LocationRemoteSource
 import com.xmartlabs.taskloans.data.repository.session.SessionLocalSource
 import com.xmartlabs.taskloans.data.repository.store.datastorage.GsonDataStoreEntitySerializer
 import com.xmartlabs.taskloans.data.repository.store.db.AppDatabase
+import com.xmartlabs.taskloans.data.repository.task.TaskRemoteSource
 import com.xmartlabs.taskloans.domain.repository.LocationRepository
 import com.xmartlabs.taskloans.domain.repository.SessionRepository
-import com.xmartlabs.taskloans.domain.repository.UserRepository
-import com.xmartlabs.swissknife.datastore.DataStoreSource
-import com.xmartlabs.taskloans.data.repository.task.TaskRemoteSource
 import com.xmartlabs.taskloans.domain.repository.TaskRepository
+import com.xmartlabs.taskloans.domain.repository.UserRepository
 import org.koin.dsl.module
 
 /**

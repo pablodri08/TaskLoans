@@ -11,10 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fontFamily="@font/cairo_regular"
-        android:textSize="@dimen/text_size.regular_big"
-        android:textColor="@color/text.list_item_team"
-        android:letterSpacing="0.02"
-        android:layout_marginStart="28dp"
         android:gravity="center_vertical"
+        android:layout_marginStart="28dp"
+        android:letterSpacing="0.02"
+        android:textColor="@color/text.list_item_team"
+        android:textSize="@dimen/text_size.regular_big"
         />
 </LinearLayout>

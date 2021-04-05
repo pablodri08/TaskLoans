@@ -1,15 +1,15 @@
 package com.xmartlabs.taskloans.device.di
 
 import com.xmartlabs.taskloans.Config
+import com.xmartlabs.taskloans.data.service.AuthServiceApi
 import com.xmartlabs.taskloans.data.service.LocationServiceApi
 import com.xmartlabs.taskloans.data.service.NetworkDebugInterceptors
 import com.xmartlabs.taskloans.data.service.NetworkLayerCreator
-import com.xmartlabs.taskloans.data.service.AuthServiceApi
 import com.xmartlabs.taskloans.data.service.TaskServiceApi
+import com.xmartlabs.taskloans.data.service.interceptors.HttpInterceptor
 import okhttp3.Interceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
-import com.xmartlabs.taskloans.data.service.interceptors.HttpInterceptor
 
 /**
  * Created by mirland on 28/04/20.
