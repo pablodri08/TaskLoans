@@ -1,6 +1,5 @@
 package com.xmartlabs.taskloans.ui.screens.dashboard
 
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.NonNull
 import androidx.recyclerview.widget.DiffUtil
@@ -29,7 +28,6 @@ class TeamAdapter : ListAdapter<UserResponse, TeamAdapter.TeamHolder>(DiffCallba
   )
 
   override fun onBindViewHolder(holder: TeamHolder, position: Int) = holder.bind(getItem(position))
-
 
   inner class TeamHolder(
       private val itemBinding: ListItemTeamBinding
