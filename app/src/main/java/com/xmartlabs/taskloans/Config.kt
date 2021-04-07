@@ -22,6 +22,10 @@ object Config {
   val DB_NAME = BuildConfig.APP_NAME.toFileName()
 
   const val API_BASE_URL = BuildConfig.API_BASE_URL
+
+  const val URL_SIGN_IN = "signin"
+  const val URL_SIGN_UP = "signup"
+  const val URL_TASKS_USERS = "tasks/1/users"
 }
 
 private fun String.toFileName() = trim()

@@ -48,7 +48,7 @@
         app:fabAlignmentMode="end"
         app:hideOnScroll="true"
         app:navigationIcon="@drawable/ic_menu_24dp"
-        style="@style/Widget.App.BottomAppBar"
+        style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
         />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

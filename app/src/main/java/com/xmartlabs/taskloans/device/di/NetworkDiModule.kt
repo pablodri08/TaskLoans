@@ -6,7 +6,7 @@ import com.xmartlabs.taskloans.data.service.LocationServiceApi
 import com.xmartlabs.taskloans.data.service.NetworkDebugInterceptors
 import com.xmartlabs.taskloans.data.service.NetworkLayerCreator
 import com.xmartlabs.taskloans.data.service.TaskServiceApi
-import com.xmartlabs.taskloans.data.service.interceptors.HttpInterceptor
+import com.xmartlabs.taskloans.data.service.interceptors.AuthInterceptor
 import okhttp3.Interceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -25,8 +25,7 @@ object NetworkDiModule {
           useCurlInterceptor = Config.ANDROID_SYSTEM_LOG_ENABLED,
           useStethoInterceptor = Config.STETHO_ENABLED
       )
-      // TODO: Add session interceptor and refresh token interceptor
-      val sessionInterceptors = listOf<Interceptor>(HttpInterceptor(get()))
+      val sessionInterceptors = listOf<Interceptor>(AuthInterceptor(get()))
       NetworkLayerCreator.createRetrofitInstance(Config.API_BASE_URL,
           sessionInterceptors + debugInterceptors)
     }

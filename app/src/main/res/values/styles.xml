@@ -62,13 +62,4 @@
         <item name="android:lineSpacingExtra">33sp</item>
         <item name="android:fontFamily">@font/cairo_regular</item>
     </style>
-
-    <style name="Widget.App.BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar.Colored">
-        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomAppBar</item>
-    </style>
-
-    <style name="ThemeOverlay.App.BottomAppBar" parent="">
-        <item name="colorPrimary">@color/primary_color</item>
-        <item name="colorOnPrimary">@color/primary_color</item>
-    </style>
 </resources>

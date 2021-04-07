@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<TextView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/userName"
     android:layout_width="match_parent"
-    android:layout_height="61dp"
-    android:orientation="horizontal"
-    >
-
-    <TextView
-        android:id="@+id/userName"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fontFamily="@font/cairo_regular"
-        android:gravity="center_vertical"
-        android:layout_marginStart="28dp"
-        android:letterSpacing="0.02"
-        android:textColor="@color/text.list_item_team"
-        android:textSize="@dimen/text_size.regular_big"
-        />
-</LinearLayout>
+    android:layout_height="wrap_content"
+    android:fontFamily="@font/cairo_regular"
+    android:gravity="center_vertical"
+    android:paddingStart="28dp"
+    android:paddingEnd="28dp"
+    android:paddingTop="25dp"
+    android:paddingBottom="25dp"
+    android:letterSpacing="0.02"
+    android:textColor="@color/text.list_item_team"
+    android:textSize="@dimen/text_size.regular_big"
+    />
