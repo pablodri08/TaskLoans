@@ -6,6 +6,7 @@ import androidx.annotation.NonNull
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.xmartlabs.swissknife.core.extensions.layoutInflater
 import com.xmartlabs.taskloans.data.model.service.UserResponse
 import com.xmartlabs.taskloans.databinding.ListItemTeamBinding
 
@@ -15,25 +16,20 @@ class TeamAdapter : ListAdapter<UserResponse, TeamAdapter.TeamHolder>(DiffCallba
     override fun areItemsTheSame(
         @NonNull oldUser: UserResponse,
         @NonNull newUser: UserResponse
-    ): Boolean {
-      return oldUser.id == newUser.id
-    }
+    ): Boolean = oldUser.id == newUser.id
 
     override fun areContentsTheSame(
         @NonNull oldUser: UserResponse,
         @NonNull newUser: UserResponse
-    ): Boolean {
-      return oldUser.name == newUser.name
-    }
+    ): Boolean = oldUser.name == newUser.name
   }
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = TeamHolder(
-      ListItemTeamBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+      ListItemTeamBinding.inflate(parent.context.layoutInflater, parent, false)
   )
 
-  override fun onBindViewHolder(holder: TeamHolder, position: Int) {
-    holder.bind(getItem(position))
-  }
+  override fun onBindViewHolder(holder: TeamHolder, position: Int) = holder.bind(getItem(position))
+
 
   inner class TeamHolder(
       private val itemBinding: ListItemTeamBinding

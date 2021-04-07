@@ -3,8 +3,8 @@ package com.xmartlabs.taskloans.ui.screens.dashboard.tabs
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.xmartlabs.swissknife.core.extensions.getDrawableCompat
 import com.xmartlabs.swissknife.core.extensions.gone
 import com.xmartlabs.swissknife.core.extensions.visible
 import com.xmartlabs.taskloans.R
@@ -21,11 +21,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class TeamFragment : BaseViewBindingFragment<FragmentTeamBinding>() {
   private val viewModel: DashboardFragmentViewModel by viewModel()
   private val adapter: TeamAdapter = TeamAdapter()
-  private var _binding: FragmentTeamBinding? = null
-  private val binding get() = _binding!!
 
   override fun inflateViewBinding(): FragmentTeamBinding =
-      FragmentTeamBinding.inflate(layoutInflater).also { _binding = it }
+      FragmentTeamBinding.inflate(layoutInflater)
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
@@ -33,23 +31,23 @@ class TeamFragment : BaseViewBindingFragment<FragmentTeamBinding>() {
     loadTeamList()
   }
 
-  override fun onDestroy() {
+  override fun onDestroy() = withViewBinding {
     super.onDestroy()
-    binding.teamRecyclerView.adapter = null
+    teamRecyclerView.adapter = null
   }
 
-  private fun setUpRecyclerView() {
-    binding.teamRecyclerView.adapter = adapter
+  private fun setUpRecyclerView() = withViewBinding {
+    teamRecyclerView.adapter = adapter
     val dividerItemDecoration = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
-    dividerItemDecoration.setDrawable(getDrawable(requireContext(), R.drawable.item_divider)!!)
-    binding.teamRecyclerView.addItemDecoration(dividerItemDecoration)
+    dividerItemDecoration.setDrawable(requireContext().getDrawableCompat(R.drawable.item_divider)!!)
+    teamRecyclerView.addItemDecoration(dividerItemDecoration)
   }
 
-  private fun loadTeamList() = with(viewModel) {
-    binding.teamProgressIndicator.visible()
-    listUsersLiveData.observeStateResult(viewLifecycleOwner,
+  private fun loadTeamList() = withViewBinding {
+    teamProgressIndicator.visible()
+    viewModel.listUsersLiveData.observeStateResult(viewLifecycleOwner,
         onFailure = { throwable ->
-          binding.teamProgressIndicator.gone()
+          teamProgressIndicator.gone()
           if (throwable is TokenExpiredException) {
             displayError(getString(R.string.text_toast_error_token))
           } else if (throwable is ServerException) {
@@ -57,7 +55,7 @@ class TeamFragment : BaseViewBindingFragment<FragmentTeamBinding>() {
           }
         },
         onSuccess = { userList ->
-          binding.teamProgressIndicator.gone()
+          teamProgressIndicator.gone()
           updateUI(userList)
         }
     )

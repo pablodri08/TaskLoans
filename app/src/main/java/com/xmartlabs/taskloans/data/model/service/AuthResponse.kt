@@ -9,5 +9,5 @@ import com.xmartlabs.taskloans.data.model.User
 data class AuthResponse(
     @SerializedName("auth_token")
     val token: String?,
-    val user: User?
+    val user: User?,
 )
