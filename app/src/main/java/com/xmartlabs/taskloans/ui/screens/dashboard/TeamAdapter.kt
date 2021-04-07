@@ -6,23 +6,24 @@ import androidx.annotation.NonNull
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.xmartlabs.taskloans.data.model.service.UserResponse
 import com.xmartlabs.taskloans.databinding.ListItemTeamBinding
 
-class TeamAdapter : ListAdapter<String, TeamAdapter.TeamHolder>(DiffCallback()) {
+class TeamAdapter : ListAdapter<UserResponse, TeamAdapter.TeamHolder>(DiffCallback()) {
 
-  private class DiffCallback : DiffUtil.ItemCallback<String>() {
+  private class DiffCallback : DiffUtil.ItemCallback<UserResponse>() {
     override fun areItemsTheSame(
-        @NonNull oldUser: String,
-        @NonNull newUser: String
+        @NonNull oldUser: UserResponse,
+        @NonNull newUser: UserResponse
     ): Boolean {
-      return oldUser === newUser
+      return oldUser.id == newUser.id
     }
 
     override fun areContentsTheSame(
-        @NonNull oldUser: String,
-        @NonNull newUser: String
+        @NonNull oldUser: UserResponse,
+        @NonNull newUser: UserResponse
     ): Boolean {
-      return oldUser == newUser
+      return oldUser.name == newUser.name
     }
   }
 
@@ -37,8 +38,8 @@ class TeamAdapter : ListAdapter<String, TeamAdapter.TeamHolder>(DiffCallback()) 
   inner class TeamHolder(
       private val itemBinding: ListItemTeamBinding
   ) : RecyclerView.ViewHolder(itemBinding.root) {
-    fun bind(data: String) {
-      itemBinding.userName.text = data
+    fun bind(data: UserResponse) {
+      itemBinding.userName.text = data.name
     }
   }
 }

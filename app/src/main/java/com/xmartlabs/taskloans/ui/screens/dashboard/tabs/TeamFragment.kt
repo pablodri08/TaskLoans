@@ -10,6 +10,7 @@ import com.xmartlabs.swissknife.core.extensions.visible
 import com.xmartlabs.taskloans.R
 import com.xmartlabs.taskloans.data.common.ServerException
 import com.xmartlabs.taskloans.data.common.TokenExpiredException
+import com.xmartlabs.taskloans.data.model.service.UserResponse
 import com.xmartlabs.taskloans.databinding.FragmentTeamBinding
 import com.xmartlabs.taskloans.ui.common.BaseViewBindingFragment
 import com.xmartlabs.taskloans.ui.common.extensions.observeStateResult
@@ -57,12 +58,12 @@ class TeamFragment : BaseViewBindingFragment<FragmentTeamBinding>() {
         },
         onSuccess = { userList ->
           binding.teamProgressIndicator.gone()
-          updateUI(userList.map { user -> user.name })
+          updateUI(userList)
         }
     )
   }
 
-  private fun updateUI(usersNames: List<String>) {
+  private fun updateUI(usersNames: List<UserResponse>) {
     adapter.submitList(usersNames)
   }
 
