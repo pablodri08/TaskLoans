@@ -10,11 +10,11 @@ import com.xmartlabs.taskloans.data.service.AuthServiceApi
  */
 class UserRemoteSource(private val authServiceApi: AuthServiceApi) : RemoteSource() {
 
-  suspend fun signIn(id: String, password: String) = callMapper {
+  suspend fun signIn(id: String, password: String) = invokeServiceCall {
     authServiceApi.signInUser(SignInRequest(id, password))
   }
 
-  suspend fun signUp(email: String, password: String, name: String) = callMapper {
+  suspend fun signUp(email: String, password: String, name: String) = invokeServiceCall {
     authServiceApi.signUpUser(User(email, password, name))
   }
 }
