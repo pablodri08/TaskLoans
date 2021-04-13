@@ -15,7 +15,7 @@ inline fun <T> LiveData<ProcessState<T>>.observeStateResult(
     viewLifecycleOwner: LifecycleOwner,
     crossinline onFailure: (Throwable) -> Unit = {},
     crossinline onLoading: () -> Unit = {},
-    crossinline onSuccess: (T) -> Unit = {}
+    crossinline onSuccess: (T) -> Unit = {},
 ) = observe(viewLifecycleOwner) { processState ->
   when (processState) {
     is ProcessState.Loading -> onLoading.invoke()
@@ -26,7 +26,7 @@ inline fun <T> LiveData<ProcessState<T>>.observeStateResult(
 inline fun <T> LiveData<Result<T>>.observeResult(
     viewLifecycleOwner: LifecycleOwner,
     crossinline onFailure: (Throwable) -> Unit = {},
-    crossinline onSuccess: (T) -> Unit = {}
+    crossinline onSuccess: (T) -> Unit = {},
 ) = observe(viewLifecycleOwner) { result -> invokeResultCallback(result, onSuccess, onFailure) }
 
 inline fun <T> invokeResultCallback(result: Result<T>, onSuccess: (T) -> Unit, onFailure: (Throwable) -> Unit) = when {
@@ -36,25 +36,25 @@ inline fun <T> invokeResultCallback(result: Result<T>, onSuccess: (T) -> Unit, o
 
 inline fun <T> LiveData<ProcessState<T>>.observeFinishSuccessResult(
     viewLifecycleOwner: LifecycleOwner,
-    crossinline onSuccess: (T) -> Unit
+    crossinline onSuccess: (T) -> Unit,
 ) = observeStateResult(viewLifecycleOwner, onSuccess = onSuccess)
 
 inline fun <T> LiveData<ProcessState<T>>.observeFinishFailureResult(
     viewLifecycleOwner: LifecycleOwner,
-    crossinline onFailure: (Throwable) -> Unit
+    crossinline onFailure: (Throwable) -> Unit,
 ) = observeStateResult(viewLifecycleOwner, onFailure = onFailure)
 
 inline fun <T> LiveData<ProcessState<T>>.observeLoadingResult(
     viewLifecycleOwner: LifecycleOwner,
-    crossinline onLoading: () -> Unit
+    crossinline onLoading: () -> Unit,
 ) = observeStateResult(viewLifecycleOwner, onLoading = onLoading)
 
 inline fun <T> LiveData<Result<T>>.observeSuccessResult(
     viewLifecycleOwner: LifecycleOwner,
-    crossinline onSuccess: (T) -> Unit
+    crossinline onSuccess: (T) -> Unit,
 ) = observeResult(viewLifecycleOwner, onSuccess = onSuccess)
 
 inline fun <T> LiveData<Result<T>>.observeFailureResult(
     viewLifecycleOwner: LifecycleOwner,
-    crossinline onFailure: (Throwable) -> Unit
+    crossinline onFailure: (Throwable) -> Unit,
 ) = observeResult(viewLifecycleOwner, onFailure = onFailure)

@@ -13,7 +13,7 @@ import com.xmartlabs.taskloans.domain.usecase.SignInUseCase
  * Created by mirland on 25/04/20.
  */
 class SignInFragmentViewModel(
-    private val signInUseCase: SignInUseCase
+    private val signInUseCase: SignInUseCase,
 ) : ViewModel() {
   private val signInMutableLiveData = MutableLiveData<SignInUseCase.Params>()
   val signIn: LiveData<ProcessState<User>> = signInMutableLiveData

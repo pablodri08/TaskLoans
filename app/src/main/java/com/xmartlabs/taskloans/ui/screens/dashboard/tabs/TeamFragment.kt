@@ -15,12 +15,11 @@ import com.xmartlabs.taskloans.databinding.FragmentTeamBinding
 import com.xmartlabs.taskloans.ui.common.BaseViewBindingFragment
 import com.xmartlabs.taskloans.ui.common.extensions.observeStateResult
 import com.xmartlabs.taskloans.ui.screens.dashboard.DashboardFragmentViewModel
-import com.xmartlabs.taskloans.ui.screens.dashboard.TeamAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TeamFragment : BaseViewBindingFragment<FragmentTeamBinding>() {
   private val viewModel: DashboardFragmentViewModel by viewModel()
-  private val adapter: TeamAdapter = TeamAdapter()
+  private var adapter: TeamAdapter? = TeamAdapter()
 
   override fun inflateViewBinding(): FragmentTeamBinding =
       FragmentTeamBinding.inflate(layoutInflater)
@@ -31,9 +30,9 @@ class TeamFragment : BaseViewBindingFragment<FragmentTeamBinding>() {
     loadTeamList()
   }
 
-  override fun onDestroy() = withViewBinding {
-    super.onDestroy()
-    teamRecyclerView.adapter = null
+  override fun onDetach() {
+    super.onDetach()
+    adapter = null
   }
 
   private fun setUpRecyclerView() = withViewBinding {
@@ -62,7 +61,7 @@ class TeamFragment : BaseViewBindingFragment<FragmentTeamBinding>() {
   }
 
   private fun updateUI(usersNames: List<UserResponse>) {
-    adapter.submitList(usersNames)
+    adapter!!.submitList(usersNames)
   }
 
   private fun displayError(error: String) = Toast.makeText(

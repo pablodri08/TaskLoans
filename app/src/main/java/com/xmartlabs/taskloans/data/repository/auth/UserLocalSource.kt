@@ -11,7 +11,7 @@ class UserLocalSource {
   private val localUsers: MutableMap<String, User> = mutableMapOf()
 
   suspend fun createUser(user: User): User = withContext(Dispatchers.IO) {
-    localUsers[user.password] = user
+    localUsers[user.id] = user
     user
   }
 

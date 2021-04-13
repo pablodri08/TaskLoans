@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
  */
 class GetLocationUseCase(
     private val locationRepository: LocationRepository,
-    dispatcher: CoroutineDispatcher
+    dispatcher: CoroutineDispatcher,
 ) : FlowCoroutineUseCase<Unit, Location>(dispatcher) {
   override fun execute(params: Unit): Flow<Location> = locationRepository.getLocation()
 }

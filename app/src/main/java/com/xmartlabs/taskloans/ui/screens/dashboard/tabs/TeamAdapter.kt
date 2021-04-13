@@ -1,4 +1,4 @@
-package com.xmartlabs.taskloans.ui.screens.dashboard
+package com.xmartlabs.taskloans.ui.screens.dashboard.tabs
 
 import android.view.ViewGroup
 import androidx.annotation.NonNull
@@ -14,12 +14,12 @@ class TeamAdapter : ListAdapter<UserResponse, TeamAdapter.TeamHolder>(DiffCallba
   private class DiffCallback : DiffUtil.ItemCallback<UserResponse>() {
     override fun areItemsTheSame(
         @NonNull oldUser: UserResponse,
-        @NonNull newUser: UserResponse
+        @NonNull newUser: UserResponse,
     ): Boolean = oldUser.id == newUser.id
 
     override fun areContentsTheSame(
         @NonNull oldUser: UserResponse,
-        @NonNull newUser: UserResponse
+        @NonNull newUser: UserResponse,
     ): Boolean = oldUser.name == newUser.name
   }
 
@@ -30,7 +30,7 @@ class TeamAdapter : ListAdapter<UserResponse, TeamAdapter.TeamHolder>(DiffCallba
   override fun onBindViewHolder(holder: TeamHolder, position: Int) = holder.bind(getItem(position))
 
   inner class TeamHolder(
-      private val itemBinding: ListItemTeamBinding
+      private val itemBinding: ListItemTeamBinding,
   ) : RecyclerView.ViewHolder(itemBinding.root) {
     fun bind(data: UserResponse) {
       itemBinding.userName.text = data.name

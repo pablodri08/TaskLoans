@@ -14,7 +14,7 @@ object ViewModelDiModule {
   val viewModels = module {
     viewModel { SignInFragmentViewModel(get()) }
     viewModel { SplashFragmentViewModel(get()) }
-    viewModel { DashboardFragmentViewModel(get(), get()) }
+    viewModel { DashboardFragmentViewModel(get(), get(), get()) }
     viewModel { SignUpFragmentViewModel(get()) }
   }
 }

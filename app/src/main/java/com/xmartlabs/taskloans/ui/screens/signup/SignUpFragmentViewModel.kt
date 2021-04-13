@@ -10,7 +10,7 @@ import com.xmartlabs.taskloans.device.common.ProcessState
 import com.xmartlabs.taskloans.domain.usecase.SignUpUseCase
 
 class SignUpFragmentViewModel(
-    private val signUpUseCase: SignUpUseCase
+    private val signUpUseCase: SignUpUseCase,
 ) : ViewModel() {
   private val signUpMutableLiveData = MutableLiveData<SignUpUseCase.Params>()
 

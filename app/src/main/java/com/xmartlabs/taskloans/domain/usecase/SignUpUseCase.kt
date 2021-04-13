@@ -7,7 +7,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 
 class SignUpUseCase(
     private val userRepository: UserRepository,
-    dispatcher: CoroutineDispatcher
+    dispatcher: CoroutineDispatcher,
 ) : CoroutineUseCase<SignUpUseCase.Params, User>(dispatcher) {
   data class Params(val email: String, val password: String, val name: String)
 

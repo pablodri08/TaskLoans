@@ -29,7 +29,7 @@ object NetworkLayerCreator {
 
   fun createRetrofitInstance(
       baseUrl: String,
-      interceptors: List<Interceptor>
+      interceptors: List<Interceptor>,
   ): Retrofit = Retrofit.Builder()
       .baseUrl(baseUrl)
       .addConverterFactory(createGsonConverterFactory())

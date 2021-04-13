@@ -1,5 +1,6 @@
 package com.xmartlabs.taskloans.ui.screens.splash
 
+import com.xmartlabs.taskloans.R
 import com.xmartlabs.taskloans.domain.usecase.SessionType
 import com.xmartlabs.taskloans.ui.common.BaseFragment
 import com.xmartlabs.taskloans.ui.common.extensions.observeStateResult
@@ -15,7 +16,7 @@ class SplashFragment : BaseFragment() {
   override fun onResume() {
     super.onResume()
     viewModel.currentSessionTypeLiveData.observeStateResult(this,
-        onFailure = { ex -> throw IllegalStateException("Invalid state", ex) },
+        onFailure = { ex -> throw IllegalStateException(getString(R.string.invalid_state), ex) },
         onSuccess = { sessionType ->
           val direction = when (sessionType) {
             SessionType.LOGGED -> SplashFragmentDirections.actionSplashFragmentToDashboardFragment()

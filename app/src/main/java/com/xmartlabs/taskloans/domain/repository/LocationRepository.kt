@@ -20,7 +20,7 @@ import kotlin.time.minutes
 @OptIn(ExperimentalTime::class)
 class LocationRepository(
     private val locationLocalSource: LocationLocalSource,
-    private val locationRemoteSource: LocationRemoteSource
+    private val locationRemoteSource: LocationRemoteSource,
 ) {
   companion object {
     private val REFRESH_LOCATION_DURATION = 1.minutes

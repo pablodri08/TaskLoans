@@ -6,12 +6,11 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.xmartlabs.taskloans.databinding.FragmentDashboardBinding
 import com.xmartlabs.taskloans.ui.common.BaseViewBindingFragment
 import com.xmartlabs.taskloans.ui.common.extensions.observeFinishSuccessResult
-import kotlinx.android.synthetic.main.fragment_dashboard.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DashboardFragment : BaseViewBindingFragment<FragmentDashboardBinding>() {
   private val viewModel: DashboardFragmentViewModel by viewModel()
-  private val adapter by lazy { ViewPageAdapter(requireActivity()) }
+  private val adapter by lazy { DashboardViewPageAdapter(this) }
 
   override fun inflateViewBinding(): FragmentDashboardBinding =
       FragmentDashboardBinding.inflate(layoutInflater)
@@ -19,8 +18,7 @@ class DashboardFragment : BaseViewBindingFragment<FragmentDashboardBinding>() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     setupScreenToolbar(viewBinding.toolbar, hasUpButton = false)
     setupViewModel()
-    pager.adapter = adapter
-    setupTabLayoutMediator()
+    setupViewPager()
   }
 
   private fun setupViewModel() = with(viewModel) {
@@ -29,13 +27,10 @@ class DashboardFragment : BaseViewBindingFragment<FragmentDashboardBinding>() {
     }
   }
 
-  private fun setupTabLayoutMediator() {
+  private fun setupViewPager() = withViewBinding {
+    pager.adapter = adapter
     val tabLayoutMediator = TabLayoutMediator(tabLayout, pager) { tab, position ->
-      when (TabItem.values()[position]) {
-        TabItem.HOME -> tab.setIcon(TabItem.HOME.iconResId)
-        TabItem.HISTORY -> tab.setIcon(TabItem.HISTORY.iconResId)
-        TabItem.TEAM -> tab.setIcon(TabItem.TEAM.iconResId)
-      }
+      tab.setIcon(DashboardTabItem.values()[position].iconResId)
     }
     tabLayoutMediator.attach()
   }

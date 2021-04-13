@@ -6,4 +6,6 @@ import com.xmartlabs.taskloans.data.service.TaskServiceApi
 class TaskRemoteSource(private val taskServiceApi: TaskServiceApi) : RemoteSource() {
 
   suspend fun getTaskUsers() = invokeServiceCall { taskServiceApi.getTaskUsers() }
+
+  suspend fun getTaskEntries(userId: String) = invokeServiceCall { taskServiceApi.getTaskEntries(userId) }
 }
