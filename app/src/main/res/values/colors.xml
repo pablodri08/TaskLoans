@@ -14,6 +14,7 @@
     <color name="tab_dashboard.indicator_color">@color/white</color>
     <color name="floating_action_button">@color/butterscotch</color>
     <color name="item_divider">@color/light_grey</color>
+    <color name="text_secondary.history_card">@color/light_grey2</color>
 
     <color name="butterscotch">#fac633</color>
     <color name="red_violet">#9d0066</color>
@@ -22,6 +23,7 @@
     <color name="white">#ffffff</color>
     <color name="light_grey">#de000000</color>
     <color name="grey">#e2e2e2</color>
+    <color name="light_grey2">#b4b4b4</color>
     <color name="dark_grey">#676767</color>
     <color name="dark_grey2">#070707</color>
     <color name="black">#000000</color>

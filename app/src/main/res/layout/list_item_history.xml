@@ -11,6 +11,16 @@
     style="Widget.MaterialComponents.CardView"
     >
 
+    <TextView
+        android:id="@+id/date_history_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:textAppearance="?attr/textAppearanceBody2"
+        android:textColor="@color/text_secondary.history_card"
+        />
+
     <LinearLayout
         android:id="@+id/history_card_layout"
         android:layout_width="match_parent"
