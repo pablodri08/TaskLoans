@@ -1,6 +1,7 @@
 package com.xmartlabs.taskloans.data.model.service
 
-data class SignInRequest(
+data class UserResponse(
+    val id: String,
+    val name: String,
     val email: String,
-    val password: String,
 )

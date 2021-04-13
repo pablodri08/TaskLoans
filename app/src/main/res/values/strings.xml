@@ -11,9 +11,10 @@
     <string name="text_toast.error_server">Something went wrong. Try again!</string>
     <string name="text_toast_error_user_conflict">User already exist!</string>
     <string name="text_toast_error_notmatch">User and password does not match!</string>
+    <string name="text_toast_error_token">Session has expired!</string>
     <string name="content_description.transfer_image">Header Transfer Image</string>
     <string name="hello_blank_home_fragment">Hello blank Home Fragment</string>
     <string name="hello_blank_history_fragment">Hello blank History Fragment</string>
-    <string name="hello_blank_team_fragment">Hello blank Team Fragment</string>
+    <string name="content_description.floating_action_button">Floating Action Button</string>
 
 </resources>

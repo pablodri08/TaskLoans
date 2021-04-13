@@ -5,8 +5,8 @@ package com.xmartlabs.taskloans.ui.common.extensions
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.observe
-import com.xmartlabs.taskloans.device.common.ProcessState
 import com.xmartlabs.swissknife.core.extensions.exhaustive
+import com.xmartlabs.taskloans.device.common.ProcessState
 
 /**
  * Created by mirland on 28/04/20.

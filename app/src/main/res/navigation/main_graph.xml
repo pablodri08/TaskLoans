@@ -17,17 +17,17 @@
         <action
             android:id="@+id/action_signInFragment_to_signUpFragment"
             app:destination="@id/signUpFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
             app:popUpTo="@id/signInFragment"
             app:popUpToInclusive="true"
-            app:enterAnim="@anim/fragment_fade_enter"
             />
 
         <action
             android:id="@+id/action_signInFragment_to_dashboardFragment"
             app:destination="@id/navigation"
+            app:enterAnim="@anim/fragment_fade_enter"
             app:popUpTo="@id/signInFragment"
             app:popUpToInclusive="true"
-            app:enterAnim="@anim/fragment_fade_enter"
             />
 
     </fragment>
@@ -42,9 +42,9 @@
         <action
             android:id="@+id/action_signUpFragment_to_signInFragment"
             app:destination="@id/signInFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
             app:popUpTo="@id/signUpFragment"
             app:popUpToInclusive="true"
-            app:enterAnim="@anim/fragment_fade_enter"
             />
 
     </fragment>
@@ -70,7 +70,8 @@
             />
 
     </fragment>
-    <navigation android:id="@+id/navigation"
+    <navigation
+        android:id="@+id/navigation"
         app:startDestination="@id/dashboardFragment"
         >
         <fragment

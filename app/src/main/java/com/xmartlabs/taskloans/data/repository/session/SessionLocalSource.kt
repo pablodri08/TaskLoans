@@ -1,7 +1,7 @@
 package com.xmartlabs.taskloans.data.repository.session
 
-import com.xmartlabs.taskloans.data.model.User
 import com.xmartlabs.swissknife.datastore.DataStoreSource
+import com.xmartlabs.taskloans.data.model.User
 import kotlinx.coroutines.flow.first
 
 /**
