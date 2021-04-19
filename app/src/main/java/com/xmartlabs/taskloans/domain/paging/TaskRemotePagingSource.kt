@@ -16,10 +16,9 @@ class TaskRemotePagingSource(
     const val DEFAULT_INIT_KEY = 1
     const val PAGE_SIZE = 10
   }
-  private var page = DEFAULT_INIT_KEY
 
   override suspend fun load(params: LoadParams<Int>): LoadResult<Int, UserEntry> {
-    page = params.key ?: DEFAULT_INIT_KEY
+    val page = params.key ?: DEFAULT_INIT_KEY
     val user = sessionRepository.getSessionUser()
     val data = mutableListOf<UserEntry>()
     val response = taskRepository.getTaskEntries(user.id, page)
@@ -33,5 +32,10 @@ class TaskRemotePagingSource(
     )
   }
 
-  override fun getRefreshKey(state: PagingState<Int, UserEntry>): Int? = page
+  override fun getRefreshKey(state: PagingState<Int, UserEntry>): Int? {
+    return state.anchorPosition?.let {
+      state.closestPageToPosition(it)?.prevKey?.plus(DEFAULT_INIT_KEY)
+          ?: state.closestPageToPosition(it)?.nextKey?.minus(DEFAULT_INIT_KEY)
+    }
+  }
 }
