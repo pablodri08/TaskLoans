@@ -143,6 +143,7 @@ dependencies {
     implementation deps.androidX.lifecycle.viewmodel
     implementation deps.androidX.navigation.fragment
     implementation deps.androidX.navigation.ui
+    implementation deps.androidX.paging3
     implementation deps.androidX.recyclerview
     implementation deps.androidX.room.coreKtx
     implementation deps.androidX.transition

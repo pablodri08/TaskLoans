@@ -2,33 +2,33 @@ package com.xmartlabs.taskloans.ui.screens.dashboard.tabs
 
 import android.view.ViewGroup
 import androidx.annotation.NonNull
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.xmartlabs.swissknife.core.extensions.layoutInflater
 import com.xmartlabs.taskloans.R
-import com.xmartlabs.taskloans.data.model.EntryUserRole
+import com.xmartlabs.taskloans.data.model.EntryUI
 import com.xmartlabs.taskloans.databinding.ListItemHistoryBinding
 import java.util.Calendar
 import java.util.Date
 import java.util.GregorianCalendar
 import java.util.Locale
 
-class HistoryAdapter : ListAdapter<EntryUserRole, HistoryAdapter.HistoryHolder>(HistoryAdapter.DiffCallback()) {
+class HistoryAdapter : PagingDataAdapter<EntryUI, HistoryAdapter.HistoryHolder>(DiffCallback()) {
   companion object {
     const val MONTH = 2
     const val DAY = 0
   }
 
-  private class DiffCallback : DiffUtil.ItemCallback<EntryUserRole>() {
+  private class DiffCallback : DiffUtil.ItemCallback<EntryUI>() {
     override fun areItemsTheSame(
-        @NonNull oldUser: EntryUserRole,
-        @NonNull newUser: EntryUserRole,
+        @NonNull oldUser: EntryUI,
+        @NonNull newUser: EntryUI,
     ): Boolean = oldUser.entryId == newUser.entryId
 
     override fun areContentsTheSame(
-        @NonNull oldUser: EntryUserRole,
-        @NonNull newUser: EntryUserRole,
+        @NonNull oldUser: EntryUI,
+        @NonNull newUser: EntryUI,
     ): Boolean = oldUser.name == newUser.name
   }
 
@@ -36,12 +36,12 @@ class HistoryAdapter : ListAdapter<EntryUserRole, HistoryAdapter.HistoryHolder>(
       ListItemHistoryBinding.inflate(parent.context.layoutInflater, parent, false)
   )
 
-  override fun onBindViewHolder(holder: HistoryAdapter.HistoryHolder, position: Int) = holder.bind(getItem(position))
+  override fun onBindViewHolder(holder: HistoryAdapter.HistoryHolder, position: Int) = holder.bind(getItem(position)!!)
 
   inner class HistoryHolder(
       private val itemBinding: ListItemHistoryBinding,
   ) : RecyclerView.ViewHolder(itemBinding.root) {
-    fun bind(data: EntryUserRole) {
+    fun bind(data: EntryUI) {
       setCardDate(data.entryDate)
       if (data.role == HistoryFragment.UserRole.RECIPIENT) {
         val yellowTransfer = R.drawable.yellow_transfer

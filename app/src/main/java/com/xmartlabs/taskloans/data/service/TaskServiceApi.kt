@@ -1,10 +1,11 @@
 package com.xmartlabs.taskloans.data.service
 
 import com.xmartlabs.taskloans.Config.TASK_LOANS_ID
-import com.xmartlabs.taskloans.data.model.service.EntryResponse
+import com.xmartlabs.taskloans.data.model.service.EntriesResponse
 import com.xmartlabs.taskloans.data.model.service.UserResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface TaskServiceApi {
   companion object {
@@ -16,5 +17,9 @@ interface TaskServiceApi {
   suspend fun getTaskUsers(): List<UserResponse>
 
   @GET(URL_TASKS_ENTRIES)
-  suspend fun getTaskEntries(@Path("user_id") userId: String): EntryResponse
+  suspend fun getTaskEntries(
+      @Path("user_id") userId: String,
+      @Query("page") page: Int,
+      @Query("per_page") perPage: Int,
+  ): EntriesResponse
 }

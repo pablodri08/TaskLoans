@@ -10,7 +10,11 @@ object DataHelper {
   suspend fun <T> mapServiceError(errorMapper: (HttpException) -> Exception, serviceCall: suspend () -> T): T = try {
     serviceCall()
   } catch (e: Exception) {
-    throw errorMapper(e as HttpException)
+    if (e is HttpException) {
+      throw errorMapper(e)
+    } else {
+      throw e
+    }
   }
 
   fun serviceErrorMapper(e: HttpException): Exception = when (e.code()) {
