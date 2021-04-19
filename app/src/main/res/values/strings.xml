@@ -7,6 +7,7 @@
     <string name="text_button.enter">entrar</string>
     <string name="text_button.create_account">Sin cuenta? <u>Crea una nueva</u> </string>
     <string name="text_button.create">Crear Cuenta</string>
+    <string name="text_history_no_entries">No entries added yet!</string>
     <string name="text_toast.error_input">Invalid input</string>
     <string name="text_toast.error_server">Something went wrong. Try again!</string>
     <string name="text_toast_error_user_conflict">User already exist!</string>

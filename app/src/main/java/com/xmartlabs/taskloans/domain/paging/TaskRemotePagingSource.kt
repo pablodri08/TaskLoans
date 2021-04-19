@@ -9,8 +9,7 @@ import com.xmartlabs.taskloans.domain.repository.TaskRepository
 class TaskRemotePagingSource(
     private val taskRepository: TaskRepository,
     private val sessionRepository: SessionRepository,
-) :
-    PagingSource<Int, UserEntry>() {
+) : PagingSource<Int, UserEntry>() {
 
   companion object {
     const val DEFAULT_INIT_KEY = 1

@@ -9,15 +9,13 @@ import com.xmartlabs.swissknife.core.extensions.layoutInflater
 import com.xmartlabs.taskloans.R
 import com.xmartlabs.taskloans.data.model.EntryUI
 import com.xmartlabs.taskloans.databinding.ListItemHistoryBinding
-import java.util.Calendar
+import java.text.SimpleDateFormat
 import java.util.Date
-import java.util.GregorianCalendar
 import java.util.Locale
 
 class HistoryAdapter : PagingDataAdapter<EntryUI, HistoryAdapter.HistoryHolder>(DiffCallback()) {
   companion object {
-    const val MONTH = 2
-    const val DAY = 0
+    const val DATEFORMAT = "d MMM"
   }
 
   private class DiffCallback : DiffUtil.ItemCallback<EntryUI>() {
@@ -57,12 +55,8 @@ class HistoryAdapter : PagingDataAdapter<EntryUI, HistoryAdapter.HistoryHolder>(
 
     private fun setCardDate(date: Date?) {
       if (date != null) {
-        val cal = GregorianCalendar()
-        cal.time = date
-        val day = cal.get(DAY)
-        val month = cal.getDisplayName(MONTH, Calendar.SHORT, Locale.US)
-        val cardDate = "$day $month"
-        itemBinding.dateHistoryCard.text = cardDate
+        val customDate = SimpleDateFormat(DATEFORMAT, Locale.US).format(date)
+        itemBinding.dateHistoryCard.text = customDate.toString()
       }
     }
 

@@ -12,7 +12,5 @@ class TaskRepository(
 
   suspend fun getUserEntries(): List<UserResponse> = taskRemoteSource.getTaskUsers()
 
-  suspend fun getTaskEntries(userId: String, page: Int): EntriesResponse {
-    return taskRemoteSource.getTaskEntries(userId, page)
-  }
+  suspend fun getTaskEntries(userId: String, page: Int): EntriesResponse = taskRemoteSource.getTaskEntries(userId, page)
 }
