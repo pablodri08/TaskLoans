@@ -125,7 +125,7 @@ dependencies {
     androidTestImplementation deps.androidX.test.junit
     androidTestImplementation deps.androidX.test.espresso
 
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+    coreLibraryDesugaring deps.desugar
 
     debugImplementation deps.debugDb
     debugImplementation deps.leakcanary
