@@ -7,6 +7,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import com.xmartlabs.taskloans.Config.PAGE_SIZE
 import com.xmartlabs.taskloans.data.model.User
 import com.xmartlabs.taskloans.data.model.UserEntry
 import com.xmartlabs.taskloans.data.model.service.UserResponse
@@ -19,16 +20,17 @@ import com.xmartlabs.taskloans.domain.usecase.TaskUsersUseCase
 import kotlinx.coroutines.flow.Flow
 
 class DashboardFragmentViewModel(
-    taskUsersUseCase: TaskUsersUseCase,
     loadUserUseCase: LoadUserUseCase,
-    taskRepository: TaskRepository,
     sessionRepository: SessionRepository,
+    taskRepository: TaskRepository,
+    taskUsersUseCase: TaskUsersUseCase,
 ) : ViewModel() {
   val listUsersLiveData: LiveData<ProcessState<List<UserResponse>>> = taskUsersUseCase.invokeAsLiveData(Unit)
   val userLiveData: LiveData<ProcessState<User?>> = loadUserUseCase.invokeAsLiveData(Unit)
   val entries: Flow<PagingData<UserEntry>> = Pager(
-      PagingConfig(pageSize = TaskRemotePagingSource.PAGE_SIZE)
+      PagingConfig(pageSize = PAGE_SIZE)
   ) {
     TaskRemotePagingSource(taskRepository, sessionRepository)
-  }.flow.cachedIn(viewModelScope)
+  }
+      .flow.cachedIn(viewModelScope)
 }

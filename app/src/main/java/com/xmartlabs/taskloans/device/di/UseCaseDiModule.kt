@@ -18,8 +18,8 @@ object UseCaseDiModule {
     factory { GetSessionTypeUseCase(get(), get(DEFAULT_DISPATCHER)) }
     factory { LoadUserUseCase(get(), get(DEFAULT_DISPATCHER)) }
     factory { SignInUseCase(get(), get(DEFAULT_DISPATCHER)) }
-    factory { TimeTrackerUseCase(get(DEFAULT_DISPATCHER)) }
     factory { SignUpUseCase(get(), get(DEFAULT_DISPATCHER)) }
     factory { TaskUsersUseCase(get(), get(DEFAULT_DISPATCHER)) }
+    factory { TimeTrackerUseCase(get(DEFAULT_DISPATCHER)) }
   }
 }

@@ -10,13 +10,13 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  * Created by mirland on 03/05/20.
  */
 // This fragment shouldn't have ui, the splash ui should be declared in the activity style.
-class SplashFragment : BaseFragment() {
+class   SplashFragment : BaseFragment() {
   private val viewModel: SplashFragmentViewModel by viewModel()
 
   override fun onResume() {
     super.onResume()
     viewModel.currentSessionTypeLiveData.observeStateResult(this,
-        onFailure = { ex -> throw IllegalStateException(getString(R.string.invalid_state), ex) },
+        onFailure = { ex -> throw IllegalStateException("Invalid State", ex) },
         onSuccess = { sessionType ->
           val direction = when (sessionType) {
             SessionType.LOGGED -> SplashFragmentDirections.actionSplashFragmentToDashboardFragment()

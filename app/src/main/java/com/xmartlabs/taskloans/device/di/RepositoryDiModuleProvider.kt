@@ -48,6 +48,6 @@ object RepositoryDiModuleProvider {
     single { LocationRepository(get(), get()) }
     single { UserRepository(get(), get(), get()) }
     single { SessionRepository(get()) }
-    single { TaskRepository(get(), get()) }
+    single { TaskRepository(get() ) }
   }
 }

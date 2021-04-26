@@ -19,7 +19,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TeamFragment : BaseViewBindingFragment<FragmentTeamBinding>() {
   private val viewModel: DashboardFragmentViewModel by viewModel()
-  private var adapter: TeamAdapter? = TeamAdapter()
+  private var adapter: TeamAdapter = TeamAdapter()
 
   override fun inflateViewBinding(): FragmentTeamBinding =
       FragmentTeamBinding.inflate(layoutInflater)
@@ -30,14 +30,14 @@ class TeamFragment : BaseViewBindingFragment<FragmentTeamBinding>() {
     loadTeamList()
   }
 
-  override fun onDetach() {
-    super.onDetach()
-    adapter = null
+  override fun onDestroyView() = withViewBinding{
+    teamRecyclerView.adapter = null
+    super.onDestroyView()
   }
 
   private fun setUpRecyclerView() = withViewBinding {
     teamRecyclerView.adapter = adapter
-    val dividerItemDecoration = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
+    val dividerItemDecoration = DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
     dividerItemDecoration.setDrawable(requireContext().getDrawableCompat(R.drawable.item_divider)!!)
     teamRecyclerView.addItemDecoration(dividerItemDecoration)
   }
@@ -61,7 +61,7 @@ class TeamFragment : BaseViewBindingFragment<FragmentTeamBinding>() {
   }
 
   private fun updateUI(usersNames: List<UserResponse>) {
-    adapter!!.submitList(usersNames)
+    adapter.submitList(usersNames)
   }
 
   private fun displayError(error: String) = Toast.makeText(

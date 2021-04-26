@@ -1,10 +1,15 @@
 package com.xmartlabs.taskloans.data.service
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.google.gson.GsonBuilder
+import com.xmartlabs.taskloans.data.common.LocalDateTimeAdapter
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.concurrent.TimeUnit
 import kotlin.time.ExperimentalTime
 import kotlin.time.seconds
@@ -27,6 +32,7 @@ object NetworkLayerCreator {
       .apply { interceptors.forEach { interceptor -> addNetworkInterceptor(interceptor) } }
       .build()
 
+  @RequiresApi(Build.VERSION_CODES.O)
   fun createRetrofitInstance(
       baseUrl: String,
       interceptors: List<Interceptor>,
@@ -36,8 +42,10 @@ object NetworkLayerCreator {
       .client(createOkHttpClient(interceptors))
       .build()
 
+  @RequiresApi(Build.VERSION_CODES.O)
   private fun createGsonConverterFactory() = GsonBuilder()
       .setDateFormat(API_DATE_FORMAT)
+      .registerTypeAdapter(LocalDateTime::class.java, LocalDateTimeAdapter(DateTimeFormatter.ISO_DATE_TIME))
       .create()
       .let { GsonConverterFactory.create(it) }
 }
