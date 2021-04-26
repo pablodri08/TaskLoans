@@ -1,7 +1,5 @@
 package com.xmartlabs.taskloans.data.common
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import com.google.gson.TypeAdapter
 import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonToken
@@ -14,13 +12,11 @@ import java.time.format.DateTimeFormatter
 
 class LocalDateTimeAdapter(private val dateTimeFormat: DateTimeFormatter) : TypeAdapter<LocalDateTime?>() {
 
-  @RequiresApi(Build.VERSION_CODES.O)
   @Throws(IOException::class)
   override fun write(jsonWriter: JsonWriter, localDate: LocalDateTime?) {
     jsonWriter.value(localDate?.let(dateTimeFormat::format))
   }
 
-  @RequiresApi(Build.VERSION_CODES.O)
   @Throws(IOException::class)
   override fun read(jsonReader: JsonReader): LocalDateTime? {
     if (jsonReader.peek() === JsonToken.NULL) {

@@ -1,7 +1,5 @@
 package com.xmartlabs.taskloans.data.common
 
-import java.lang.RuntimeException
-
 class InvalidUserException(message: String, cause: Throwable) : RuntimeException(message, cause)
 
 class TokenExpiredException(message: String, cause: Throwable) : RuntimeException(message, cause)

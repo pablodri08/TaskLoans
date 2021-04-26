@@ -13,12 +13,12 @@ class UserLocalSource {
   }
 
   suspend fun createUser(user: User): User = withContext(Dispatchers.IO) {
-    //TODO: Use datastore
+    // TODO: Use datastore
     user
   }
 
   suspend fun getUser(userId: String): User {
-    //TODO: Use datastore
-    return User(id = userId, DUMMYDATA, DUMMYDATA, emptyList()) //DUMMY USER
+    // TODO: Use datastore
+    return User(id = userId, DUMMYDATA, DUMMYDATA, emptyList()) // DUMMY USER
   }
 }

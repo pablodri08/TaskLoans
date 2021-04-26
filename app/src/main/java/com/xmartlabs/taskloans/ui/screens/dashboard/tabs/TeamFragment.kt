@@ -30,7 +30,7 @@ class TeamFragment : BaseViewBindingFragment<FragmentTeamBinding>() {
     loadTeamList()
   }
 
-  override fun onDestroyView() = withViewBinding{
+  override fun onDestroyView() = withViewBinding {
     teamRecyclerView.adapter = null
     super.onDestroyView()
   }

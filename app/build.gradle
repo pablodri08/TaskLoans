@@ -95,6 +95,7 @@ android {
     }
 
     compileOptions {
+        coreLibraryDesugaringEnabled true
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -123,6 +124,8 @@ android {
 dependencies {
     androidTestImplementation deps.androidX.test.junit
     androidTestImplementation deps.androidX.test.espresso
+
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
 
     debugImplementation deps.debugDb
     debugImplementation deps.leakcanary

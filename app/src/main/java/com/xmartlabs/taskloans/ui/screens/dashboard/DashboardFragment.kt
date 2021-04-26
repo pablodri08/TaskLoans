@@ -11,7 +11,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DashboardFragment : BaseViewBindingFragment<FragmentDashboardBinding>() {
   private val viewModel: DashboardFragmentViewModel by viewModel()
-  private lateinit var adapter : FragmentStateAdapter
+  private lateinit var adapter: FragmentStateAdapter
 
   override fun inflateViewBinding(): FragmentDashboardBinding =
       FragmentDashboardBinding.inflate(layoutInflater)

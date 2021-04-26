@@ -1,9 +1,7 @@
 package com.xmartlabs.taskloans.ui.screens.dashboard.tabs
 
-import android.os.Build
 import android.view.ViewGroup
 import androidx.annotation.NonNull
-import androidx.annotation.RequiresApi
 import androidx.paging.PagingData
 import androidx.paging.PagingDataAdapter
 import androidx.paging.flatMap
@@ -13,11 +11,8 @@ import com.xmartlabs.swissknife.core.extensions.layoutInflater
 import com.xmartlabs.taskloans.R
 import com.xmartlabs.taskloans.data.model.UserEntry
 import com.xmartlabs.taskloans.databinding.ListItemHistoryBinding
-import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.util.Date
-import java.util.Locale
 
 class HistoryAdapter : PagingDataAdapter<HistoryAdapter.EntryUI, HistoryAdapter.HistoryHolder>(DiffCallback()) {
   companion object {
@@ -40,7 +35,6 @@ class HistoryAdapter : PagingDataAdapter<HistoryAdapter.EntryUI, HistoryAdapter.
       ListItemHistoryBinding.inflate(parent.context.layoutInflater, parent, false)
   )
 
-  @RequiresApi(Build.VERSION_CODES.O)
   override fun onBindViewHolder(holder: HistoryAdapter.HistoryHolder, position: Int) = holder.bind(getItem(position)!!)
 
   suspend fun submitEntries(pagingData: PagingData<UserEntry>) {
@@ -60,14 +54,12 @@ class HistoryAdapter : PagingDataAdapter<HistoryAdapter.EntryUI, HistoryAdapter.
       private val itemBinding: ListItemHistoryBinding,
   ) : RecyclerView.ViewHolder(itemBinding.root) {
 
-    @RequiresApi(Build.VERSION_CODES.O)
     fun bind(data: EntryUI) {
       setCardDate(data.entryDate)
       setImages(data.role.transferImage, data.role.washImage)
       itemBinding.historyCardTextName.text = data.name
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     private fun setCardDate(date: LocalDateTime?) {
       if (date != null) {
         val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern(DATEFORMAT)
@@ -82,17 +74,17 @@ class HistoryAdapter : PagingDataAdapter<HistoryAdapter.EntryUI, HistoryAdapter.
     }
   }
 
-  private val UserRole.transferImage : Int
-  get() = when (this) {
-    UserRole.PERFORMER -> R.drawable.violet_transfer
-    UserRole.RECIPIENT -> R.drawable.yellow_transfer
-  }
+  private val UserRole.transferImage: Int
+    get() = when (this) {
+      UserRole.PERFORMER -> R.drawable.violet_transfer
+      UserRole.RECIPIENT -> R.drawable.yellow_transfer
+    }
 
   private val UserRole.washImage: Int
-  get() = when (this) {
-    UserRole.PERFORMER -> R.drawable.violet_wash
-    UserRole.RECIPIENT -> R.drawable.yellow_wash
-  }
+    get() = when (this) {
+      UserRole.PERFORMER -> R.drawable.violet_wash
+      UserRole.RECIPIENT -> R.drawable.yellow_wash
+    }
 
   data class EntryUI(
       val name: String,

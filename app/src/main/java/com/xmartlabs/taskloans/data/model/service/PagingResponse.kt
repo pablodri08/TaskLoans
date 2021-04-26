@@ -2,7 +2,6 @@ package com.xmartlabs.taskloans.data.model.service
 
 import com.google.gson.annotations.SerializedName
 import java.time.LocalDateTime
-import java.util.Date
 
 data class PagingResponse<T>(
     var data: List<T>,
