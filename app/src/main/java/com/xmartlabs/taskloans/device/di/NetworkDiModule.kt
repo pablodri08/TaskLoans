@@ -1,5 +1,7 @@
 package com.xmartlabs.taskloans.device.di
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.xmartlabs.taskloans.Config
 import com.xmartlabs.taskloans.data.service.AuthServiceApi
 import com.xmartlabs.taskloans.data.service.LocationServiceApi
@@ -15,6 +17,7 @@ import retrofit2.Retrofit
  * Created by mirland on 28/04/20.
  */
 object NetworkDiModule {
+  @RequiresApi(Build.VERSION_CODES.O)
   val network = module {
     single { get<Retrofit>().create(LocationServiceApi::class.java) }
     single { get<Retrofit>().create(AuthServiceApi::class.java) }

@@ -15,7 +15,7 @@ import kotlin.time.milliseconds
  */
 @OptIn(ExperimentalTime::class)
 class TimeTrackerUseCase(
-    dispatcher: CoroutineDispatcher
+    dispatcher: CoroutineDispatcher,
 ) : FlowCoroutineUseCase<TimeTrackerUseCase.Params, Duration>(dispatcher) {
   data class Params(val startTime: Date)
 

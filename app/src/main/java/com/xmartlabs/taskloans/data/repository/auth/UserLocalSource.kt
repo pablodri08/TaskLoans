@@ -8,14 +8,17 @@ import kotlinx.coroutines.withContext
  * Created by mirland on 25/04/20.
  */
 class UserLocalSource {
-  private val localUsers: MutableMap<String, User> = mutableMapOf()
+  companion object {
+    const val DUMMYDATA = ""
+  }
 
   suspend fun createUser(user: User): User = withContext(Dispatchers.IO) {
-    localUsers[user.password] = user
+    // TODO: Use datastore
     user
   }
 
   suspend fun getUser(userId: String): User {
-    return requireNotNull(localUsers[userId])
+    // TODO: Use datastore
+    return User(id = userId, DUMMYDATA, DUMMYDATA, emptyList()) // DUMMY USER
   }
 }

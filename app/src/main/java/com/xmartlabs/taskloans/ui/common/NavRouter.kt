@@ -31,7 +31,7 @@ interface NavRouter {
       @IdRes resId: Int,
       args: Bundle? = null,
       navOptions: NavOptions? = null,
-      navExtras: Navigator.Extras? = null
+      navExtras: Navigator.Extras? = null,
   )
 }
 

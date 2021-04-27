@@ -11,7 +11,7 @@ import com.xmartlabs.taskloans.data.repository.session.SessionLocalSource
 class UserRepository(
     private val userLocalSource: UserLocalSource,
     private val userRemoteSource: UserRemoteSource,
-    private val sessionLocalSource: SessionLocalSource
+    private val sessionLocalSource: SessionLocalSource,
 ) {
 
   suspend fun signIn(id: String, password: String): User {

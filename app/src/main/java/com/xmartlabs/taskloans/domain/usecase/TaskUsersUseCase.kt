@@ -5,10 +5,10 @@ import com.xmartlabs.taskloans.domain.repository.TaskRepository
 import com.xmartlabs.taskloans.domain.usecase.common.CoroutineUseCase
 import kotlinx.coroutines.CoroutineDispatcher
 
-class TaskUseCase(
+class TaskUsersUseCase(
     private val taskRepository: TaskRepository,
-    dispatcher: CoroutineDispatcher
+    dispatcher: CoroutineDispatcher,
 ) : CoroutineUseCase<Unit, List<UserResponse>>(dispatcher) {
 
-  override suspend fun execute(params: Unit): List<UserResponse> = taskRepository.getTaskUsers()
+  override suspend fun execute(params: Unit): List<UserResponse> = taskRepository.getUserEntries()
 }

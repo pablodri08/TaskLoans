@@ -23,5 +23,5 @@ data class Location(
     val isp: String,
     val org: String,
     val query: String,
-    val timestamp: Date = Date()
+    val timestamp: Date = Date(),
 )

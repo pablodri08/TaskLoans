@@ -1,7 +1,7 @@
 package com.xmartlabs.taskloans.data.repository.auth
 
-import com.xmartlabs.taskloans.data.model.User
 import com.xmartlabs.taskloans.data.model.service.SignInRequest
+import com.xmartlabs.taskloans.data.model.service.SignUpRequest
 import com.xmartlabs.taskloans.data.repository.RemoteSource
 import com.xmartlabs.taskloans.data.service.AuthServiceApi
 
@@ -15,6 +15,6 @@ class UserRemoteSource(private val authServiceApi: AuthServiceApi) : RemoteSourc
   }
 
   suspend fun signUp(email: String, password: String, name: String) = invokeServiceCall {
-    authServiceApi.signUpUser(User(email, password, name))
+    authServiceApi.signUpUser(SignUpRequest(email, password, name))
   }
 }

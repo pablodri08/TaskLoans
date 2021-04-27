@@ -5,7 +5,7 @@ import com.xmartlabs.taskloans.domain.usecase.GetSessionTypeUseCase
 import com.xmartlabs.taskloans.domain.usecase.LoadUserUseCase
 import com.xmartlabs.taskloans.domain.usecase.SignInUseCase
 import com.xmartlabs.taskloans.domain.usecase.SignUpUseCase
-import com.xmartlabs.taskloans.domain.usecase.TaskUseCase
+import com.xmartlabs.taskloans.domain.usecase.TaskUsersUseCase
 import com.xmartlabs.taskloans.domain.usecase.TimeTrackerUseCase
 import org.koin.dsl.module
 
@@ -18,8 +18,8 @@ object UseCaseDiModule {
     factory { GetSessionTypeUseCase(get(), get(DEFAULT_DISPATCHER)) }
     factory { LoadUserUseCase(get(), get(DEFAULT_DISPATCHER)) }
     factory { SignInUseCase(get(), get(DEFAULT_DISPATCHER)) }
-    factory { TimeTrackerUseCase(get(DEFAULT_DISPATCHER)) }
     factory { SignUpUseCase(get(), get(DEFAULT_DISPATCHER)) }
-    factory { TaskUseCase(get(), get(DEFAULT_DISPATCHER)) }
+    factory { TaskUsersUseCase(get(), get(DEFAULT_DISPATCHER)) }
+    factory { TimeTrackerUseCase(get(DEFAULT_DISPATCHER)) }
   }
 }

@@ -9,7 +9,7 @@ import kotlinx.coroutines.CoroutineDispatcher
  */
 class GetSessionTypeUseCase(
     private val sessionRepository: SessionRepository,
-    dispatcher: CoroutineDispatcher
+    dispatcher: CoroutineDispatcher,
 ) : CoroutineUseCase<Unit, SessionType>(dispatcher) {
   override suspend fun execute(params: Unit): SessionType =
       sessionRepository.isUserLogged()

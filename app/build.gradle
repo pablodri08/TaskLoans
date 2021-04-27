@@ -11,7 +11,6 @@ apply plugin: 'com.android.application'
 apply from: rootProject.file('scripts/versioning.gradle')
 apply from: rootProject.file('scripts/read_properties.gradle')
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'org.jetbrains.kotlin.android.extensions'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
@@ -96,6 +95,7 @@ android {
     }
 
     compileOptions {
+        coreLibraryDesugaringEnabled true
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -125,6 +125,8 @@ dependencies {
     androidTestImplementation deps.androidX.test.junit
     androidTestImplementation deps.androidX.test.espresso
 
+    coreLibraryDesugaring deps.desugar
+
     debugImplementation deps.debugDb
     debugImplementation deps.leakcanary
 
@@ -144,6 +146,7 @@ dependencies {
     implementation deps.androidX.lifecycle.viewmodel
     implementation deps.androidX.navigation.fragment
     implementation deps.androidX.navigation.ui
+    implementation deps.androidX.paging3
     implementation deps.androidX.recyclerview
     implementation deps.androidX.room.coreKtx
     implementation deps.androidX.transition

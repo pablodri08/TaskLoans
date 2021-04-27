@@ -15,12 +15,11 @@ import com.xmartlabs.taskloans.databinding.FragmentTeamBinding
 import com.xmartlabs.taskloans.ui.common.BaseViewBindingFragment
 import com.xmartlabs.taskloans.ui.common.extensions.observeStateResult
 import com.xmartlabs.taskloans.ui.screens.dashboard.DashboardFragmentViewModel
-import com.xmartlabs.taskloans.ui.screens.dashboard.TeamAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TeamFragment : BaseViewBindingFragment<FragmentTeamBinding>() {
   private val viewModel: DashboardFragmentViewModel by viewModel()
-  private val adapter: TeamAdapter = TeamAdapter()
+  private var adapter: TeamAdapter = TeamAdapter()
 
   override fun inflateViewBinding(): FragmentTeamBinding =
       FragmentTeamBinding.inflate(layoutInflater)
@@ -31,14 +30,14 @@ class TeamFragment : BaseViewBindingFragment<FragmentTeamBinding>() {
     loadTeamList()
   }
 
-  override fun onDestroy() = withViewBinding {
-    super.onDestroy()
+  override fun onDestroyView() = withViewBinding {
     teamRecyclerView.adapter = null
+    super.onDestroyView()
   }
 
   private fun setUpRecyclerView() = withViewBinding {
     teamRecyclerView.adapter = adapter
-    val dividerItemDecoration = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
+    val dividerItemDecoration = DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
     dividerItemDecoration.setDrawable(requireContext().getDrawableCompat(R.drawable.item_divider)!!)
     teamRecyclerView.addItemDecoration(dividerItemDecoration)
   }

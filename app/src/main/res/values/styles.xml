@@ -3,9 +3,9 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Bridge">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/darkish_purple</item>
-        <item name="colorPrimaryDark">@color/darkish_purple</item>
-        <item name="colorAccent">@color/darkish_purple</item>
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimaryDark">@color/primary_color</item>
+        <item name="colorAccent">@color/primary_color</item>
     </style>
 
     <style name="AppTheme.Launcher" parent="AppTheme.NoActionBar">
@@ -29,7 +29,7 @@
     <style name="AppTheme.ToolbarStyle" parent="Widget.MaterialComponents.Toolbar">
         <item name="titleTextAppearance">@style/Toolbar.TitleText</item>
         <item name="android:minHeight">?attr/actionBarSize</item>
-        <item name="android:background">@color/darkish_purple</item>
+        <item name="android:background">@color/primary_color</item>
         <item name="titleTextColor">@android:color/white</item>
     </style>
 

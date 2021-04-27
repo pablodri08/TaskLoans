@@ -15,7 +15,7 @@ class SplashFragment : BaseFragment() {
   override fun onResume() {
     super.onResume()
     viewModel.currentSessionTypeLiveData.observeStateResult(this,
-        onFailure = { ex -> throw IllegalStateException("Invalid state", ex) },
+        onFailure = { ex -> throw IllegalStateException("Invalid State", ex) },
         onSuccess = { sessionType ->
           val direction = when (sessionType) {
             SessionType.LOGGED -> SplashFragmentDirections.actionSplashFragmentToDashboardFragment()

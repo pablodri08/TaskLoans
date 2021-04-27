@@ -18,7 +18,7 @@ object NetworkDebugInterceptors {
   fun createDebugInterceptors(
       useOkHttpInterceptor: Boolean,
       useCurlInterceptor: Boolean,
-      useStethoInterceptor: Boolean
+      useStethoInterceptor: Boolean,
   ): List<Interceptor> = mutableListOf<Interceptor>()
       .apply {
         if (useStethoInterceptor) add(createStethoInterceptor())
