@@ -11,4 +11,8 @@ class TaskRemoteSource(private val taskServiceApi: TaskServiceApi) : RemoteSourc
   suspend fun getTaskEntries(userId: String, page: Int) = invokeServiceCall {
     taskServiceApi.getTaskEntries(userId, page, PAGE_SIZE)
   }
+
+  suspend fun getTaskBalance() = invokeServiceCall {
+    taskServiceApi.getTaskBalance()
+  }
 }

@@ -21,7 +21,7 @@
 
     <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:fontFamily">@font/cairo_bold</item>
-        <item name="android:textSize">@dimen/text_size.regular__big</item>
+        <item name="android:textSize">@dimen/text_size.big</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:letterSpacing">0.01</item>
     </style>
@@ -61,5 +61,9 @@
         <item name="android:letterSpacing">0.02</item>
         <item name="android:lineSpacingExtra">33sp</item>
         <item name="android:fontFamily">@font/cairo_regular</item>
+    </style>
+
+    <style name="HomeTheme" parent="android:Theme">
+    <item name="android:background">@color/white</item>
     </style>
 </resources>
