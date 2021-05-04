@@ -70,10 +70,7 @@ class HomeFragment : BaseViewBindingFragment<FragmentHomeBinding>() {
   }
 
   private fun updateUI(balanceList: List<BalanceResponse>) = withViewBinding {
-    var totalBalance = 0
-    balanceList.map {
-      totalBalance += it.favour - it.against
-    }
+    val totalBalance = balanceList.sumBy { it.favour - it.against }
     val cardText = "$totalBalance lavadas"
     val negativeCardText = "--$cardText"
     val positiveCardText = "+$cardText"
