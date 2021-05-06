@@ -2,7 +2,10 @@
 <resources>
     <dimen name="text_size.small">12sp</dimen>
     <dimen name="text_size.medium">14sp</dimen>
+    <dimen name="text_size.medium_big">16.9sp</dimen>
     <dimen name="text_size.regular_big">18sp</dimen>
-    <dimen name="text_size.regular__big">21.1sp</dimen>
+    <dimen name="text_size.big">21.1sp</dimen>
+    <dimen name="text_size.big_big">24sp</dimen>
+    <dimen name="text_size.extra_big">25.4sp</dimen>
     <dimen name="editText_radius.big_big">10sp</dimen>
 </resources>

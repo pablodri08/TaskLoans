@@ -1,6 +1,7 @@
 package com.xmartlabs.taskloans.ui.common
 
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
@@ -28,4 +29,10 @@ abstract class BaseFragment : Fragment() {
       if (android.R.id.home == item.itemId) onToolbarNavigationClicked() else false
 
   protected open fun onToolbarNavigationClicked(): Boolean = router.onUpButtonTapped()
+
+  protected fun displayError(error: String) = Toast.makeText(
+      requireContext(),
+      error,
+      Toast.LENGTH_SHORT
+  ).show()
 }

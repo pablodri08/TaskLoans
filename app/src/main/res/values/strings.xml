@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">TaskLoans</string>
     <string name="screen_sign_in.no_name">noname</string>
+    <string name="text_card.home">Diferencial</string>
     <string name="text_hint.user">Usuario</string>
     <string name="text_hint.email">Email</string>
     <string name="text_hint.password">Contraseña</string>
@@ -14,8 +15,9 @@
     <string name="text_toast_error_notmatch">User and password does not match!</string>
     <string name="text_toast_error_token">Session has expired!</string>
     <string name="content_description.transfer_image">Header Transfer Image</string>
-    <string name="hello_blank_home_fragment">Hello blank Home Fragment</string>
     <string name="content_description.floating_action_button">Floating Action Button</string>
     <string name="content_description.history_images">Images history tab.</string>
+    <string name="content_description.home_card_image">Image home tab card.</string>
+    <string name="text_card.home_lavadas">lavadas</string>
 
 </resources>

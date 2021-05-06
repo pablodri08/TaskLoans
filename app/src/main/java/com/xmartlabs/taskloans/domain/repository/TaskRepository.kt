@@ -1,5 +1,6 @@
 package com.xmartlabs.taskloans.domain.repository
 
+import com.xmartlabs.taskloans.data.model.service.BalanceResponse
 import com.xmartlabs.taskloans.data.model.service.PagingResponse
 import com.xmartlabs.taskloans.data.model.service.PagingResponseData
 import com.xmartlabs.taskloans.data.model.service.UserResponse
@@ -13,4 +14,6 @@ class TaskRepository(
 
   suspend fun getTaskEntries(userId: String, page: Int): PagingResponse<PagingResponseData> =
       taskRemoteSource.getTaskEntries(userId, page)
+
+  suspend fun getTaskBalance(): List<BalanceResponse> = taskRemoteSource.getTaskBalance()
 }

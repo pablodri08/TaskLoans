@@ -3,7 +3,6 @@ package com.xmartlabs.taskloans.ui.screens.signin
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import com.xmartlabs.swissknife.core.extensions.disable
 import com.xmartlabs.swissknife.core.extensions.enable
 import com.xmartlabs.swissknife.core.extensions.gone
@@ -81,10 +80,4 @@ class SignInFragment : BaseViewBindingFragment<FragmentSigninBinding>() {
       )
     }
   }
-
-  private fun displayError(error: String) = Toast.makeText(
-      requireContext(),
-      error,
-      Toast.LENGTH_SHORT
-  ).show()
 }
