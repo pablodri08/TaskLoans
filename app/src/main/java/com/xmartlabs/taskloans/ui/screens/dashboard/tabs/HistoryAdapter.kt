@@ -1,7 +1,6 @@
 package com.xmartlabs.taskloans.ui.screens.dashboard.tabs
 
 import android.view.ViewGroup
-import androidx.annotation.NonNull
 import androidx.paging.PagingData
 import androidx.paging.PagingDataAdapter
 import androidx.paging.flatMap
@@ -21,13 +20,13 @@ class HistoryAdapter : PagingDataAdapter<HistoryAdapter.EntryUI, HistoryAdapter.
 
   private class DiffCallback : DiffUtil.ItemCallback<EntryUI>() {
     override fun areItemsTheSame(
-        @NonNull oldUser: EntryUI,
-        @NonNull newUser: EntryUI,
+        oldUser: EntryUI,
+        newUser: EntryUI,
     ): Boolean = oldUser.entryId == newUser.entryId
 
     override fun areContentsTheSame(
-        @NonNull oldUser: EntryUI,
-        @NonNull newUser: EntryUI,
+        oldUser: EntryUI,
+        newUser: EntryUI,
     ): Boolean = oldUser.name == newUser.name
   }
 

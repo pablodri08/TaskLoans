@@ -2,7 +2,6 @@ package com.xmartlabs.taskloans.ui.screens.dashboard.tabs
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import com.xmartlabs.swissknife.core.extensions.getColorCompat
@@ -70,10 +69,4 @@ class HistoryFragment : BaseViewBindingFragment<FragmentHistoryBinding>() {
       }
     }
   }
-
-  private fun displayError(error: String) = Toast.makeText(
-      requireContext(),
-      error,
-      Toast.LENGTH_SHORT
-  ).show()
 }

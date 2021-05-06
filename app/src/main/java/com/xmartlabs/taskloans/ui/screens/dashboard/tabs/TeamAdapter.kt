@@ -1,7 +1,6 @@
 package com.xmartlabs.taskloans.ui.screens.dashboard.tabs
 
 import android.view.ViewGroup
-import androidx.annotation.NonNull
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -13,13 +12,13 @@ class TeamAdapter : ListAdapter<UserResponse, TeamAdapter.TeamHolder>(DiffCallba
 
   private class DiffCallback : DiffUtil.ItemCallback<UserResponse>() {
     override fun areItemsTheSame(
-        @NonNull oldUser: UserResponse,
-        @NonNull newUser: UserResponse,
+        oldUser: UserResponse,
+        newUser: UserResponse,
     ): Boolean = oldUser.id == newUser.id
 
     override fun areContentsTheSame(
-        @NonNull oldUser: UserResponse,
-        @NonNull newUser: UserResponse,
+        oldUser: UserResponse,
+        newUser: UserResponse,
     ): Boolean = oldUser.name == newUser.name
   }
 

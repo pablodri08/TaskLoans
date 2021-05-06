@@ -2,7 +2,6 @@ package com.xmartlabs.taskloans.ui.screens.dashboard.tabs
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.xmartlabs.swissknife.core.extensions.getDrawableCompat
 import com.xmartlabs.swissknife.core.extensions.gone
@@ -63,10 +62,4 @@ class TeamFragment : BaseViewBindingFragment<FragmentTeamBinding>() {
   private fun updateUI(usersNames: List<UserResponse>) {
     adapter.submitList(usersNames)
   }
-
-  private fun displayError(error: String) = Toast.makeText(
-      requireContext(),
-      error,
-      Toast.LENGTH_SHORT
-  ).show()
 }

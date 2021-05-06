@@ -2,7 +2,6 @@ package com.xmartlabs.taskloans.ui.screens.dashboard.tabs
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.xmartlabs.swissknife.core.extensions.getColorCompat
 import com.xmartlabs.swissknife.core.extensions.getDrawableCompat
@@ -49,44 +48,42 @@ class HomeFragment : BaseViewBindingFragment<FragmentHomeBinding>() {
     viewModel.balanceLiveData.observeStateResult(viewLifecycleOwner,
         onFailure = { throwable ->
           homeProgressIndicator.gone()
-          if (throwable is TokenExpiredException) {
-            displayError(getString(R.string.text_toast_error_token))
-          } else if (throwable is ServerException) {
-            displayError(getString(R.string.text_toast_error_server))
-          }
+          checkThrowable(throwable)
         },
         onSuccess = { balanceList ->
           homeProgressIndicator.gone()
           noEntriesTextField.invisible()
-          if (balanceList.isNullOrEmpty()) {
-            noEntriesTextField.visible()
-            noEntriesTextField.text = getString(R.string.text_history_no_entries)
-            noEntriesTextField.setTextColor(requireContext().getColorCompat(R.color.black))
-          } else {
-            updateUI(balanceList)
-          }
+          updateUI(balanceList)
         }
     )
   }
 
   private fun updateUI(balanceList: List<BalanceResponse>) = withViewBinding {
-    val totalBalance = balanceList.sumBy { it.favour - it.against }
-    val cardText = "$totalBalance lavadas"
-    val negativeCardText = "--$cardText"
-    val positiveCardText = "+$cardText"
-    with(homeCardText) {
-      when {
-        totalBalance > 0 -> text = positiveCardText
-        totalBalance < 0 -> text = negativeCardText
-        else -> text = cardText
+    if (balanceList.isNullOrEmpty()) {
+      noEntriesTextField.visible()
+      noEntriesTextField.text = getString(R.string.text_history_no_entries)
+      noEntriesTextField.setTextColor(requireContext().getColorCompat(R.color.black))
+    } else {
+      val totalBalance = balanceList.sumBy { it.favour - it.against }
+      val cardText = "$totalBalance ${getString(R.string.text_card_home_lavadas)}"
+      val negativeCardText = "-$cardText"
+      val positiveCardText = "+$cardText"
+      with(homeCardText) {
+        text = when {
+          totalBalance > 0 -> positiveCardText
+          totalBalance < 0 -> negativeCardText
+          else -> cardText
+        }
       }
+      adapter.submitList(balanceList)
     }
-    adapter.submitList(balanceList)
   }
 
-  private fun displayError(error: String) = Toast.makeText(
-      requireContext(),
-      error,
-      Toast.LENGTH_SHORT
-  ).show()
+  private fun checkThrowable(throwable: Throwable) {
+    if (throwable is TokenExpiredException) {
+      displayError(getString(R.string.text_toast_error_token))
+    } else if (throwable is ServerException) {
+      displayError(getString(R.string.text_toast_error_server))
+    }
+  }
 }

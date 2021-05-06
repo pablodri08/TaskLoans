@@ -18,5 +18,6 @@
     <string name="content_description.floating_action_button">Floating Action Button</string>
     <string name="content_description.history_images">Images history tab.</string>
     <string name="content_description.home_card_image">Image home tab card.</string>
+    <string name="text_card.home_lavadas">lavadas</string>
 
 </resources>

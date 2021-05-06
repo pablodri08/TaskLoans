@@ -1,27 +1,25 @@
 package com.xmartlabs.taskloans.ui.screens.dashboard.tabs
 
-import android.graphics.Color.GREEN
-import android.graphics.Color.RED
 import android.view.ViewGroup
-import androidx.annotation.NonNull
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.xmartlabs.swissknife.core.extensions.getColorCompat
 import com.xmartlabs.swissknife.core.extensions.layoutInflater
+import com.xmartlabs.taskloans.R
 import com.xmartlabs.taskloans.data.model.service.BalanceResponse
 import com.xmartlabs.taskloans.databinding.ListItemHomeBinding
 
 class HomeAdapter : ListAdapter<BalanceResponse, HomeAdapter.HomeHolder>(DiffCallback()) {
-
   private class DiffCallback : DiffUtil.ItemCallback<BalanceResponse>() {
     override fun areItemsTheSame(
-        @NonNull oldBalance: BalanceResponse,
-        @NonNull newBalance: BalanceResponse,
+        oldBalance: BalanceResponse,
+        newBalance: BalanceResponse,
     ): Boolean = oldBalance.user.id == newBalance.user.id
 
     override fun areContentsTheSame(
-        @NonNull oldBalance: BalanceResponse,
-        @NonNull newBalance: BalanceResponse,
+        oldBalance: BalanceResponse,
+        newBalance: BalanceResponse,
     ): Boolean = oldBalance.user.name == newBalance.user.name
   }
 
@@ -41,9 +39,10 @@ class HomeAdapter : ListAdapter<BalanceResponse, HomeAdapter.HomeHolder>(DiffCal
       setDifferentialColor(balance)
     }
 
-    private fun setDifferentialColor(balance: Int) = with(itemBinding) {
-      if (balance >= 0) textViewWashDifferential.setTextColor(GREEN)
-      else textViewWashDifferential.setTextColor(RED)
+    private fun setDifferentialColor(balance: Int) = with(itemBinding.textViewWashDifferential) {
+      val greenColor = context.getColorCompat(R.color.apple_green)
+      val redColor = context.getColorCompat(R.color.red)
+      setTextColor(if (balance >= 0) greenColor else redColor)
     }
   }
 }
